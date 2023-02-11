@@ -36,6 +36,11 @@ textarea {
   outline-color: rgb(221, 255, 255);
 }
 
+.select_date {
+  margin-right: 50px;
+  width: 55%;
+}
+
 input[type="text"]:focus,
 [type="email"]:focus,
 textarea:focus {

@@ -1,4 +1,4 @@
-import { DEFAULT } from "../../js/const";
+import { DEFAULT } from "../../const/const";
 
 function FormSubmit(dataInput, setDataInput, salesData, setSalesData) {
   setSalesData([...salesData, dataInput]);

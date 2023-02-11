@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Input } from "./Input";
 import { FormSubmit } from "./FormSubmit";
-import { DEFAULT } from "../../js/const";
+import { DEFAULT } from "../../const/const";
+import { MANAGER, TOVAR, MAX_LENGTH } from "../../const/const";
 
 function InputData(props) {
   const { salesData, setSalesData, isRestartPage, setIsRestartPage } = props;
@@ -17,16 +18,16 @@ function InputData(props) {
 
   useEffect(() => {
     if (!isRestartPage) {
-    try {
-      localStorage.setItem("salesData", JSON.stringify(salesData));
-      fetch("http://localhost:3001/api/update_json", {
-        method: "POST",
-        body: JSON.stringify(salesData),
-      });
-      console.log("efect");
-    } catch (error) {
-      alert(error);
-    }
+      try {
+        localStorage.setItem("salesData", JSON.stringify(salesData));
+        fetch("http://localhost:3001/api/update_json", {
+          method: "POST",
+          body: JSON.stringify(salesData),
+        });
+        console.log("efect");
+      } catch (error) {
+        alert(error);
+      }
     }
   }, [salesData]);
 
@@ -57,6 +58,13 @@ function InputData(props) {
     }
   };
 
+  const checkLength = (sentences, setSentences, limitSymbol) => {
+    if (sentences.length > limitSymbol) {
+      alert("Лімит символів перевищено!");
+      setSentences(sentences.slice(0, limitSymbol));
+    }
+  };
+
   const onChangeDateSale = (event) => {
     setDateSale(event.target.value);
   };
@@ -71,18 +79,22 @@ function InputData(props) {
 
   const onChangeAmountTovar = (event) => {
     checkLetters(event, setAmountTovar);
+    checkLength(amountTovar, setAmountTovar, MAX_LENGTH.TOVAR);
   };
 
   const onChangePriceOne = (event) => {
     checkLetters(event, setPriceOne);
+    checkLength(priceOne, setPriceOne, MAX_LENGTH.PRICE);
   };
 
   const onChangeFioClient = (event) => {
     checkNumber(event, setFioClient);
+    checkLength(fioClient, setFioClient, MAX_LENGTH.SYMBOL);
   };
 
   const onChangePhone = (event) => {
     checkLetters(event, setPhone);
+    checkLength(phone, setPhone, MAX_LENGTH.PHONE);
   };
 
   const dataInput = {
@@ -111,7 +123,7 @@ function InputData(props) {
     event.preventDefault();
     FormSubmit(dataInput, setDataInput, salesData, setSalesData);
     setIsFormSubmit(true);
-    setIsRestartPage(false)
+    setIsRestartPage(false);
     setTimeout(() => {
       setIsFormSubmit(false);
     }, 1000);
@@ -130,20 +142,24 @@ function InputData(props) {
     {
       className: "name",
       typeInput: "text",
-      placeholder: "Менеджер з продажу",
+      placeholder: "Оберіть менеджера",
       name: "name",
       id: "name_input",
       onChange: onChangeFio,
       value: fio,
+      isSelect: true,
+      dataSelect: MANAGER,
     },
     {
       className: "name",
       typeInput: "text",
-      placeholder: "Назва товару",
+      placeholder: "Оберіть товар",
       name: "name",
       id: "name_input",
       onChange: onChangeNameTovar,
       value: nameTovar,
+      isSelect: true,
+      dataSelect: TOVAR,
     },
     {
       className: "name",
@@ -184,7 +200,17 @@ function InputData(props) {
   ];
 
   const input = inputConfig.map(
-    ({ className, typeInput, placeholder, name, id, onChange, value }) => (
+    ({
+      className,
+      typeInput,
+      placeholder,
+      name,
+      id,
+      onChange,
+      value,
+      isSelect,
+      dataSelect,
+    }) => (
       <Input
         className={className}
         typeInput={typeInput}
@@ -193,6 +219,8 @@ function InputData(props) {
         id={id}
         onChange={onChange}
         value={value}
+        isSelect={isSelect}
+        dataSelect={dataSelect}
       />
     )
   );
