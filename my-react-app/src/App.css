@@ -1,0 +1,31 @@
+@import url(Navigation/css/InputData.css);
+@import url(Navigation/css/Nav.css);
+@import url(Navigation/css/OutputData.css);
+
+.button-delete {
+  position: absolute;
+  transform: rotate(45deg);
+  background-color: #ebf0f3;
+  border: none;
+  font-size: 25px;
+  margin-left: 1220px;
+  margin-top: -35px;
+  padding-top: 10px;
+
+}
+
+.button-delete:hover {
+  color: red;
+}
+
+.container-form-delete {
+  display: flex;
+  width: 700px;
+  margin-top: -300px;
+}
+
+
+
+
+
+
