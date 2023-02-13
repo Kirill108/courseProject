@@ -93,7 +93,6 @@ function DeleteCategory(props) {
     setSalesData(
       salesData.filter((recorder) => recorder.item !== Number(optionItem))
     );
-    console.log("optionItem: ", optionItem);
     if (JSX_AllItem.length === 1) {
       setSalesData(
         salesData.filter((recorder) => recorder.item !== allItem[0])
