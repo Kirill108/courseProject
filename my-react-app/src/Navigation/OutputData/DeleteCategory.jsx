@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { ListReact } from "../../helper/react_list";
 
 function DeleteCategory(props) {
   const { isDelete, salesData, setSalesData, setIsRestartPage } = props;
 
   const [valueOption, setValueOption] = useState();
   const [valueOptionTovar, setValueOptionTovar] = useState();
+  const [optionPhone, setOptionPhone] = useState();
+  const [optionItem, setOptionItem] = useState();
 
   const salesManagers = Array.from(
     new Set(salesData.map((item) => item.salesManager))
@@ -14,6 +17,20 @@ function DeleteCategory(props) {
     new Set(salesData.map((item) => item.nameTovar))
   );
 
+  const allNumberPhone = Array.from(
+    new Set(salesData.map((item) => item.phone))
+  );
+
+  const allItem = Array.from(new Set(salesData.map((item) => item.item)));
+
+  const allManager = ListReact(salesManagers);
+
+  const allTovar = ListReact(allProducts);
+
+  const JSX_AllPhone = ListReact(allNumberPhone);
+
+  const JSX_AllItem = ListReact(allItem);
+
   const onChangeValueOption = (event) => {
     setValueOption(event.target.value);
   };
@@ -22,17 +39,13 @@ function DeleteCategory(props) {
     setValueOptionTovar(event.target.value);
   };
 
-  const allManager = salesManagers.map((item) => (
-    <option key={item} value={item}>
-      {item}
-    </option>
-  ));
+  const onChangeValuePhone = (event) => {
+    setOptionPhone(event.target.value);
+  };
 
-  const allTovar = allProducts.map((item) => (
-    <option key={item} value={item}>
-      {item}
-    </option>
-  ));
+  const onChangeValueItem = (event) => {
+    setOptionItem(event.target.value);
+  };
 
   const DeleteSelectedManager = (event) => {
     event.preventDefault();
@@ -62,6 +75,33 @@ function DeleteCategory(props) {
     setIsRestartPage(false);
   };
 
+  const DeleteSelectedPhone = (event) => {
+    event.preventDefault();
+    setSalesData(
+      salesData.filter((recorder) => recorder.phone !== optionPhone)
+    );
+    if (JSX_AllPhone.length === 1) {
+      setSalesData(
+        salesData.filter((recorder) => recorder.phone !== allNumberPhone[0])
+      );
+    }
+    setIsRestartPage(false);
+  };
+
+  const DeleteSelectedItem = (event) => {
+    event.preventDefault();
+    setSalesData(
+      salesData.filter((recorder) => recorder.item !== Number(optionItem))
+    );
+    console.log("optionItem: ", optionItem);
+    if (JSX_AllItem.length === 1) {
+      setSalesData(
+        salesData.filter((recorder) => recorder.item !== allItem[0])
+      );
+    }
+    setIsRestartPage(false);
+  };
+
   if (isDelete) {
     return (
       <div className="container-form-delete">
@@ -74,7 +114,7 @@ function DeleteCategory(props) {
             value={valueOption}
             required
           >
-            <option disabled>Оберіть менеджера</option>
+            <option selected>Оберіть менеджера</option>
             {allManager}
           </select>
           <input type="submit" value="Видалити" />
@@ -89,8 +129,36 @@ function DeleteCategory(props) {
             value={valueOptionTovar}
             required
           >
-            <option disabled>Оберіть товар</option>
+            <option selected>Оберіть товар</option>
             {allTovar}
+          </select>
+          <input type="submit" value="Видалити" />
+        </form>
+        <form className="product-delete-form" onSubmit={DeleteSelectedPhone}>
+          <label>Видалити за номером телефона</label>
+          <select
+            id="cars"
+            name="cars"
+            onChange={onChangeValuePhone}
+            value={optionPhone}
+            required
+          >
+            <option selected>Оберіть номер</option>
+            {JSX_AllPhone}
+          </select>
+          <input type="submit" value="Видалити" />
+        </form>
+        <form className="product-delete-form" onSubmit={DeleteSelectedItem}>
+          <label>Видалити за номером запису</label>
+          <select
+            id="cars"
+            name="cars"
+            onChange={onChangeValueItem}
+            value={optionItem}
+            required
+          >
+            <option selected>Оберіть номер</option>
+            {JSX_AllItem}
           </select>
           <input type="submit" value="Видалити" />
         </form>
