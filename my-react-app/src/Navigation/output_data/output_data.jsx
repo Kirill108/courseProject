@@ -1,5 +1,5 @@
-import { Button } from "./Button";
-import { DeleteCategory } from "./DeleteCategory";
+import { Button } from "./button";
+import { DeleteCategory } from "./delete_category";
 
 function OutputData(props) {
   const {

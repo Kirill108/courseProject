@@ -1,6 +1,6 @@
-import { OutputData } from "../OutputData/OutputData";
+import { OutputData } from "../output_data/output_data";
 
-function EditData(props) {
+function DeleteData(props) {
   const {
     salesData,
     setSalesData,
@@ -11,9 +11,10 @@ function EditData(props) {
   } = props;
 
   return (
-    <section id="EditData">
+    <section id="deleteData" className="section-delete">
       <OutputData
         salesData={salesData}
+        isDelete
         setSalesData={setSalesData}
         isRestartPage={isRestartPage}
         setIsRestartPage={setIsRestartPage}
@@ -24,4 +25,4 @@ function EditData(props) {
   );
 }
 
-export { EditData };
+export { DeleteData };

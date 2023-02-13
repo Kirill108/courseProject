@@ -1,6 +1,6 @@
-@import url(Navigation/css/InputData.css);
-@import url(Navigation/css/Nav.css);
-@import url(Navigation/css/OutputData.css);
+@import url(navigation/css/input_data.css);
+@import url(navigation/css/nav.css);
+@import url(navigation/css/output_data.css);
 
 .button-delete {
   position: absolute;

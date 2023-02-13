@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Input } from "./Input";
-import { FormSubmit } from "./FormSubmit";
+import { FormSubmit } from "./form_submit";
 import { DEFAULT } from "../../const/const";
 import { MANAGER, TOVAR, MAX_LENGTH } from "../../const/const";
 
