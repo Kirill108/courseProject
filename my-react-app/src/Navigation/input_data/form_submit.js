@@ -19,9 +19,9 @@ function FormSubmit(dataInput, setDataInput, salesData, setSalesData) {
     alert('Уже есть такая запись!')
   }
 
-  // setDataInput.map((setData) => {
-  //   setData(DEFAULT.VALUE);
-  // });
+  setDataInput.map((setData) => {
+    setData(DEFAULT.VALUE);
+  });
 }
 
 export { FormSubmit };
