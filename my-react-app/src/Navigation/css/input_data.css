@@ -3,6 +3,7 @@
 
 body {
   background: #ebf0f3;
+  overflow: hidden;
 }
 
 #container {
@@ -10,6 +11,8 @@ body {
   max-width: 768px;
   margin: 60px auto;
   position: relative;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 form {
@@ -97,4 +100,28 @@ h1 {
 }
 
 .message-form-submit {
+}
+
+@media only screen and (max-width: 1024px),
+  (min-device-width: 600px) and (max-device-width: 1024px) {
+  .wrapper {
+    border: 1px solid #c9b087;
+  }
+  TR {
+    border: 1px solid #c9b087;
+  }
+  TD {
+    border: none;
+  }
+  TR > TD:nth-child(1),
+  TD:nth-child(3) {
+    float: left;
+    width: 50%;
+    border-right: 1px solid #c9b087;
+  }
+  TR > TD:nth-child(2),
+  TD:nth-child(4) {
+    float: right;
+    width: 45.6%;
+  }
 }

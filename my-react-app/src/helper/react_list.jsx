@@ -1,9 +1,9 @@
-function ListReact (array) {
-	return array.map((item) => (
-		<option key={item} value={item}>
-		  {item}
-		</option>
-	  ));
+function ListReact(array) {
+  return array.map((item, index) => (
+    <option key={index} value={item}>
+      {item}
+    </option>
+  ));
 }
 
-export {ListReact}
+export { ListReact };

@@ -3,9 +3,13 @@ import { Input } from "./Input";
 import { FormSubmit } from "./form_submit";
 import { DEFAULT } from "../../const/const";
 import { MANAGER, TOVAR, MAX_LENGTH } from "../../const/const";
+import { useSelector, useDispatch } from "react-redux";
+import { changeEditingRow } from "../../state/slice/editing_row";
+import { changeSalesData } from "../../state/slice/data_sale";
+import { useSalesData } from "../../helper/use_sales_data";
 
 function InputData(props) {
-  const { salesData, setSalesData, isRestartPage, setIsRestartPage } = props;
+  const { isRestartPage, setIsRestartPage, isEdit } = props;
   const [dateSale, setDateSale] = useState(DEFAULT.VALUE);
   const [fio, setFio] = useState(DEFAULT.VALUE);
   const [nameTovar, setNameTovar] = useState(DEFAULT.VALUE);
@@ -16,6 +20,22 @@ function InputData(props) {
 
   const [isFormSubmit, setIsFormSubmit] = useState(false);
 
+  const itemEdit = useSelector((store) => store.edit.editingRow);
+  const salesData = useSelector((store) => store.dataSales.salesData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (itemEdit) {
+      setDateSale(salesData[itemEdit.item - 1].dateSale);
+      setFio(salesData[itemEdit.item - 1].salesManager);
+      setNameTovar(salesData[itemEdit.item - 1].nameTovar);
+      setAmountTovar(salesData[itemEdit.item - 1].amountTovar);
+      setPriceOne(salesData[itemEdit.item - 1].priceOne);
+      setFioClient(salesData[itemEdit.item - 1].fioClient);
+      setPhone(salesData[itemEdit.item - 1].phone);
+    }
+  }, [itemEdit]);
+
   useEffect(() => {
     if (!isRestartPage) {
       try {
@@ -24,23 +44,12 @@ function InputData(props) {
           method: "POST",
           body: JSON.stringify(salesData),
         });
-        console.log("efect");
+        dispatch(changeSalesData(salesData));
       } catch (error) {
         alert(error);
       }
     }
   }, [salesData]);
-
-  useEffect(() => {
-    try {
-      const data = JSON.parse(localStorage.getItem("salesData"));
-      if (data) {
-        setSalesData(data);
-      }
-    } catch (error) {
-      alert(error);
-    }
-  }, []);
 
   const checkNumber = (event, set) => {
     if (event.target.value.search(/\d/) !== -1) {
@@ -98,7 +107,6 @@ function InputData(props) {
   };
 
   const dataInput = {
-    // number: isRestartPage,
     dateSale,
     salesManager: fio,
     nameTovar,
@@ -107,6 +115,7 @@ function InputData(props) {
     pay: Number(amountTovar) * Number(priceOne),
     fioClient,
     phone,
+    item: salesData.length + 1,
   };
 
   const setDataInput = [
@@ -119,14 +128,52 @@ function InputData(props) {
     setDateSale,
   ];
 
+  function resetInput() {
+    setDataInput.map((setData) => setData(DEFAULT.VALUE));
+  }
+
+  const updateSalesData = useSalesData();
+
   const formSubmit = (event) => {
     event.preventDefault();
-    FormSubmit(dataInput, setDataInput, salesData, setSalesData);
-    setIsFormSubmit(true);
-    setIsRestartPage(false);
-    setTimeout(() => {
-      setIsFormSubmit(false);
-    }, 1000);
+    if (phone.length === 10) {
+      FormSubmit(dataInput, setDataInput, salesData, updateSalesData);
+      setIsFormSubmit(true);
+      setIsRestartPage(false);
+      setTimeout(() => {
+        setIsFormSubmit(false);
+      }, 1000);
+    } else {
+      alert("Введіть валідний номер телефону!");
+    }
+  };
+
+  const formEdit = (event) => {
+    event.preventDefault();
+    if (phone.length === 10) {
+      const updateData = salesData.map((recorder) => {
+        if (recorder.item === itemEdit.item) {
+          return {
+            ...recorder,
+            amountTovar,
+            dateSale,
+            fioClient,
+            item: itemEdit.item,
+            nameTovar,
+            phone,
+            priceOne,
+            salesManager: fio,
+          };
+        }
+        return recorder;
+      });
+      setDataInput.map((setData) => setData(DEFAULT.VALUE));
+      dispatch(changeSalesData(updateData));
+      console.log("updateData: ", updateData);
+      dispatch(changeEditingRow(null));
+    } else {
+      alert("Введіть валідний номер телефону!");
+    }
   };
 
   const inputConfig = [
@@ -135,7 +182,7 @@ function InputData(props) {
       typeInput: "date",
       placeholder: "Дата продажу",
       name: "name",
-      id: "name_input",
+      id: 1,
       onChange: onChangeDateSale,
       value: dateSale,
     },
@@ -144,7 +191,7 @@ function InputData(props) {
       typeInput: "text",
       placeholder: "Оберіть менеджера",
       name: "name",
-      id: "name_input",
+      id: 2,
       onChange: onChangeFio,
       value: fio,
       isSelect: true,
@@ -155,7 +202,7 @@ function InputData(props) {
       typeInput: "text",
       placeholder: "Оберіть товар",
       name: "name",
-      id: "name_input",
+      id: 3,
       onChange: onChangeNameTovar,
       value: nameTovar,
       isSelect: true,
@@ -166,7 +213,7 @@ function InputData(props) {
       typeInput: "text",
       placeholder: "Кількість товару",
       name: "name",
-      id: "name_input",
+      id: 4,
       onChange: onChangeAmountTovar,
       value: amountTovar,
     },
@@ -175,7 +222,7 @@ function InputData(props) {
       typeInput: "text",
       placeholder: "Ціна за одиницю",
       name: "name",
-      id: "name_input",
+      id: 5,
       onChange: onChangePriceOne,
       value: priceOne,
     },
@@ -184,7 +231,7 @@ function InputData(props) {
       typeInput: "text",
       placeholder: "ПІБ клієнта",
       name: "name",
-      id: "name_input",
+      id: 6,
       onChange: onChangeFioClient,
       value: fioClient,
     },
@@ -193,7 +240,7 @@ function InputData(props) {
       typeInput: "text",
       placeholder: "телефон (095562359)",
       name: "name",
-      id: "name_input",
+      id: 7,
       onChange: onChangePhone,
       value: phone,
     },
@@ -212,6 +259,7 @@ function InputData(props) {
       dataSelect,
     }) => (
       <Input
+        key={id}
         className={className}
         typeInput={typeInput}
         placeholder={placeholder}
@@ -221,18 +269,28 @@ function InputData(props) {
         value={value}
         isSelect={isSelect}
         dataSelect={dataSelect}
+        isEdit={isEdit}
       />
     )
   );
   return (
     <section id="inputData">
       <div id="container">
-        <h1>&bull; Введіть дані продажу &bull;</h1>
+        <h1>&bull; {isEdit ? "Редагувати" : "Введіть"} дані продажу &bull;</h1>
         <div className="underline" />
-        <form action="#" method="post" id="contact_form" onSubmit={formSubmit}>
+        <form
+          action="#"
+          method="post"
+          id="contact_form"
+          onSubmit={isEdit ? formEdit : formSubmit}
+        >
           {input}
           <div className="submit">
-            <input type="submit" value="Додати запис" id="form_button" />
+            <input
+              type="submit"
+              value={isEdit ? "Редагувати" : "Додати запис"}
+              id="form_button"
+            />
           </div>
           {isFormSubmit && (
             <div className="message-form-submit">Запис додано</div>

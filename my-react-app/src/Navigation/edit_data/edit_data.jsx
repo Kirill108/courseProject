@@ -1,24 +1,28 @@
 import { OutputData } from "../output_data/output_data";
+import { InputData } from "../input_data/input_data";
+import { useSelector, useDispatch } from "react-redux";
 
 function EditData(props) {
-  const {
-    salesData,
-    setSalesData,
-    isRestartPage,
-    setIsRestartPage,
-    setNumbering,
-    numbering,
-  } = props;
+  const { isRestartPage, setIsRestartPage  } = props;
 
+  const itemEdit = useSelector((store) => store.edit.editingRow);
+  if (!itemEdit) {
+    return (
+      <section id="EditData">
+        <OutputData
+          isRestartPage={isRestartPage}
+          setIsRestartPage={setIsRestartPage}
+          isEdit
+        />
+      </section>
+    );
+  }
   return (
     <section id="EditData">
-      <OutputData
-        salesData={salesData}
-        setSalesData={setSalesData}
+      <InputData
         isRestartPage={isRestartPage}
         setIsRestartPage={setIsRestartPage}
-        setNumbering={setNumbering}
-        numbering={numbering}
+        isEdit
       />
     </section>
   );

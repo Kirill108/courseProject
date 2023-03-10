@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ListReact } from "../../helper/react_list";
 
 function DeleteCategory(props) {
-  const { isDelete, salesData, setSalesData, setIsRestartPage } = props;
+  const { isDelete, salesData, updateSalesData, setIsRestartPage } = props;
 
   const [valueOption, setValueOption] = useState();
   const [valueOptionTovar, setValueOptionTovar] = useState();
@@ -49,11 +49,11 @@ function DeleteCategory(props) {
 
   const DeleteSelectedManager = (event) => {
     event.preventDefault();
-    setSalesData(
+    updateSalesData(
       salesData.filter((recorder) => recorder.salesManager !== valueOption)
     );
     if (allManager.length === 1) {
-      setSalesData(
+      updateSalesData(
         salesData.filter(
           (recorder) => recorder.salesManager !== salesManagers[0]
         )
@@ -64,11 +64,11 @@ function DeleteCategory(props) {
 
   const DeleteSelectedProducts = (event) => {
     event.preventDefault();
-    setSalesData(
+    updateSalesData(
       salesData.filter((recorder) => recorder.nameTovar !== valueOptionTovar)
     );
     if (allTovar.length === 1) {
-      setSalesData(
+      updateSalesData(
         salesData.filter((recorder) => recorder.nameTovar !== allProducts[0])
       );
     }
@@ -77,11 +77,11 @@ function DeleteCategory(props) {
 
   const DeleteSelectedPhone = (event) => {
     event.preventDefault();
-    setSalesData(
+    updateSalesData(
       salesData.filter((recorder) => recorder.phone !== optionPhone)
     );
     if (JSX_AllPhone.length === 1) {
-      setSalesData(
+      updateSalesData(
         salesData.filter((recorder) => recorder.phone !== allNumberPhone[0])
       );
     }
@@ -90,11 +90,11 @@ function DeleteCategory(props) {
 
   const DeleteSelectedItem = (event) => {
     event.preventDefault();
-    setSalesData(
+    updateSalesData(
       salesData.filter((recorder) => recorder.item !== Number(optionItem))
     );
     if (JSX_AllItem.length === 1) {
-      setSalesData(
+      updateSalesData(
         salesData.filter((recorder) => recorder.item !== allItem[0])
       );
     }
@@ -113,7 +113,7 @@ function DeleteCategory(props) {
             value={valueOption}
             required
           >
-            <option selected>Оберіть менеджера</option>
+            <option defaultValue>Оберіть менеджера</option>
             {allManager}
           </select>
           <input type="submit" value="Видалити" />
@@ -128,7 +128,7 @@ function DeleteCategory(props) {
             value={valueOptionTovar}
             required
           >
-            <option selected>Оберіть товар</option>
+            <option defaultValue>Оберіть товар</option>
             {allTovar}
           </select>
           <input type="submit" value="Видалити" />
@@ -142,7 +142,7 @@ function DeleteCategory(props) {
             value={optionPhone}
             required
           >
-            <option selected>Оберіть номер</option>
+            <option defaultValue>Оберіть номер</option>
             {JSX_AllPhone}
           </select>
           <input type="submit" value="Видалити" />
@@ -156,7 +156,7 @@ function DeleteCategory(props) {
             value={optionItem}
             required
           >
-            <option selected>Оберіть номер</option>
+            <option defaultValue>Оберіть номер</option>
             {JSX_AllItem}
           </select>
           <input type="submit" value="Видалити" />
