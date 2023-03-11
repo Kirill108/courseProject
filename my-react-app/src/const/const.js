@@ -24,4 +24,11 @@ const MAX_LENGTH = {
   PHONE: 10,
 };
 
-export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH };
+const SORT = {
+  NAME_CLIENT_ASCENDING: "ПІБ клієнта (зростання)",
+  NAME_CLIENT_DESCENDING: "ПІБ клієнта (спадання)",
+  AMOUNT_TOVAR_ASCENDING: "кількість товару (зростання)",
+  AMOUNT_TOVAR_DESCENDING: "кількість товару (спадання)",
+};
+
+export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH, SORT };

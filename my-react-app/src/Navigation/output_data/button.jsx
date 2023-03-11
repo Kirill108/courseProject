@@ -8,7 +8,7 @@ function Button(props) {
     item,
     salesData,
     updateSalesData,
-    setIsRestartPage,
+
     isEdit,
   } = props;
 
@@ -25,17 +25,17 @@ function Button(props) {
         item: index + 1,
       }))
     );
-    setIsRestartPage(false);
+
   };
 
   const editRecorder = (items) => {
     dispatch(changeEditingRow(items));
-    setIsRestartPage(false);
+
   };
 
   const saveRecorder = (items) => {
     // dispatch(changeEditingRow(items));
-    // setIsRestartPage(false);
+
   };
 
   if (isDelete) {

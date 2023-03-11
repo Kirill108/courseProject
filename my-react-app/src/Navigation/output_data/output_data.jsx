@@ -6,12 +6,7 @@ import { useSalesData } from "../../helper/use_sales_data";
 import "./edit-data.css";
 
 function OutputData(props) {
-  const {
-    isDelete,
-    isRestartPage,
-    setIsRestartPage,
-    isEdit,
-  } = props;
+  const { isDelete, isEdit, isSort } = props;
   const salesData = useSelector((store) => store.dataSales.salesData);
   const updateSalesData = useSalesData();
   // eslint-disable-next-line no-return-assign
@@ -28,14 +23,13 @@ function OutputData(props) {
         <td>{item.pay}</td>
         <td>{item.fioClient}</td>
         <td>{item.phone}</td>
-        <td>
+        <td className="button-action">
           <Button
             key={index}
             isDelete={isDelete}
             item={item}
             salesData={salesData}
             updateSalesData={updateSalesData}
-            setIsRestartPage={setIsRestartPage}
             isEdit={isEdit}
           />
         </td>
@@ -50,7 +44,6 @@ function OutputData(props) {
           isDelete={isDelete}
           salesData={salesData}
           updateSalesData={updateSalesData}
-          setIsRestartPage={setIsRestartPage}
         />
         <table>
           <caption>Дані продажу</caption>

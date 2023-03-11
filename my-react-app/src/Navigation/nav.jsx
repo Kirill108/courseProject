@@ -5,8 +5,8 @@ function Nav () {
 			<a href="#outputData">Вивести данні</a>
 			<a href="#EditData">Редагувати</a>
 			<a href="#deleteData">Видалити</a>
-			<a href="#sortedData">Відсортувати</a>
-			<a href="#requestsData">Зробити запит</a>
+			<a href="#sortData">Відсортувати</a>
+			<a href="#requestData">Зробити запит</a>
 		</nav>
 	)
 }

@@ -5,11 +5,10 @@ import { DEFAULT } from "../../const/const";
 import { MANAGER, TOVAR, MAX_LENGTH } from "../../const/const";
 import { useSelector, useDispatch } from "react-redux";
 import { changeEditingRow } from "../../state/slice/editing_row";
-import { changeSalesData } from "../../state/slice/data_sale";
 import { useSalesData } from "../../helper/use_sales_data";
 
 function InputData(props) {
-  const { isRestartPage, setIsRestartPage, isEdit } = props;
+  const { isEdit } = props;
   const [dateSale, setDateSale] = useState(DEFAULT.VALUE);
   const [fio, setFio] = useState(DEFAULT.VALUE);
   const [nameTovar, setNameTovar] = useState(DEFAULT.VALUE);
@@ -35,21 +34,6 @@ function InputData(props) {
       setPhone(salesData[itemEdit.item - 1].phone);
     }
   }, [itemEdit]);
-
-  useEffect(() => {
-    if (!isRestartPage) {
-      try {
-        localStorage.setItem("salesData", JSON.stringify(salesData));
-        fetch("http://localhost:3001/api/update_json", {
-          method: "POST",
-          body: JSON.stringify(salesData),
-        });
-        dispatch(changeSalesData(salesData));
-      } catch (error) {
-        alert(error);
-      }
-    }
-  }, [salesData]);
 
   const checkNumber = (event, set) => {
     if (event.target.value.search(/\d/) !== -1) {
@@ -137,12 +121,7 @@ function InputData(props) {
   const formSubmit = (event) => {
     event.preventDefault();
     if (phone.length === 10) {
-      FormSubmit(dataInput, setDataInput, salesData, updateSalesData);
-      setIsFormSubmit(true);
-      setIsRestartPage(false);
-      setTimeout(() => {
-        setIsFormSubmit(false);
-      }, 1000);
+      FormSubmit(dataInput, setDataInput, salesData, updateSalesData, setIsFormSubmit);
     } else {
       alert("Введіть валідний номер телефону!");
     }
@@ -167,9 +146,7 @@ function InputData(props) {
         }
         return recorder;
       });
-      setDataInput.map((setData) => setData(DEFAULT.VALUE));
-      dispatch(changeSalesData(updateData));
-      console.log("updateData: ", updateData);
+      updateSalesData(updateData);
       dispatch(changeEditingRow(null));
     } else {
       alert("Введіть валідний номер телефону!");

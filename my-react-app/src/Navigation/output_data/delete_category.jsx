@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ListReact } from "../../helper/react_list";
 
 function DeleteCategory(props) {
-  const { isDelete, salesData, updateSalesData, setIsRestartPage } = props;
+  const { isDelete, salesData, updateSalesData } = props;
 
   const [valueOption, setValueOption] = useState();
   const [valueOptionTovar, setValueOptionTovar] = useState();
@@ -59,7 +59,7 @@ function DeleteCategory(props) {
         )
       );
     }
-    setIsRestartPage(false);
+
   };
 
   const DeleteSelectedProducts = (event) => {
@@ -72,7 +72,7 @@ function DeleteCategory(props) {
         salesData.filter((recorder) => recorder.nameTovar !== allProducts[0])
       );
     }
-    setIsRestartPage(false);
+
   };
 
   const DeleteSelectedPhone = (event) => {
@@ -85,7 +85,6 @@ function DeleteCategory(props) {
         salesData.filter((recorder) => recorder.phone !== allNumberPhone[0])
       );
     }
-    setIsRestartPage(false);
   };
 
   const DeleteSelectedItem = (event) => {
@@ -98,7 +97,6 @@ function DeleteCategory(props) {
         salesData.filter((recorder) => recorder.item !== allItem[0])
       );
     }
-    setIsRestartPage(false);
   };
 
   if (isDelete) {

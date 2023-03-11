@@ -6,8 +6,17 @@ function useSalesData() {
   const dispatch = useDispatch();
 
   const updateSalesData = useCallback(
-    (data) => {
-      dispatch(changeSalesData(data));
+    (salesData) => {
+      try {
+        localStorage.setItem("salesData", JSON.stringify(salesData));
+        fetch("http://localhost:3001/api/update_json", {
+          method: "POST",
+          body: JSON.stringify(salesData),
+        });
+        dispatch(changeSalesData(salesData));
+      } catch (error) {
+        alert(error);
+      }
     },
     [dispatch]
   );

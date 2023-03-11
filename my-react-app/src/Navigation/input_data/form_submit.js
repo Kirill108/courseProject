@@ -1,6 +1,12 @@
 import { DEFAULT } from "../../const/const";
 
-function FormSubmit(dataInput, setDataInput, salesData, updateSalesData) {
+function FormSubmit(
+  dataInput,
+  setDataInput,
+  salesData,
+  updateSalesData,
+  setIsFormSubmit
+) {
   const isDuplicate = salesData.find(
     (sale) =>
       sale.dateSale === dataInput.dateSale &&
@@ -18,6 +24,10 @@ function FormSubmit(dataInput, setDataInput, salesData, updateSalesData) {
     // setDataInput.map((setData) => {
     //   setData(DEFAULT.VALUE);
     // });
+    setIsFormSubmit(true);
+    setTimeout(() => {
+      setIsFormSubmit(false);
+    }, 1000);
   } else {
     alert("Уже есть такая запись!");
   }
