@@ -1,8 +1,10 @@
+import MenuItem from "@mui/material/MenuItem";
+
 function ListReact(array) {
   return array.map((item, index) => (
-    <option key={index} value={item}>
+    <MenuItem key={index} value={item}>
       {item}
-    </option>
+    </MenuItem>
   ));
 }
 

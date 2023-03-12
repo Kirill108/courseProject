@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { changeSalesData } from "../state/slice/data_sale"; 
+import { changeSalesData } from "../state/slice/data_sale";
 
 function useSalesData() {
   const dispatch = useDispatch();
@@ -13,7 +13,14 @@ function useSalesData() {
           method: "POST",
           body: JSON.stringify(salesData),
         });
-        dispatch(changeSalesData(salesData));
+        dispatch(
+          changeSalesData(
+            salesData.map((recorder, index) => ({
+              ...recorder,
+              item: index + 1,
+            }))
+          )
+        );
       } catch (error) {
         alert(error);
       }

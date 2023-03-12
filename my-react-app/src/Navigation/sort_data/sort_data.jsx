@@ -6,6 +6,13 @@ import { SORT } from "../../const/const";
 import { changeOptionSort } from "../../state/slice/data_sort";
 import { changeSalesData } from "../../state/slice/data_sale";
 import { sorting } from "./sorting/sorting";
+
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 import "./sort_data.css";
 
 function SortData() {
@@ -18,26 +25,41 @@ function SortData() {
     const typeSort = event.target.value;
     setOptionSort(typeSort);
 
-    const sortArr = sorting(dataSale, typeSort)
+    const sortArr = sorting(dataSale, typeSort);
     dispatch(changeSalesData(sortArr));
 
     // dispatch(changeOptionSort(typeSort));
   }
 
+  if(dataSale.length) {
+    return (
+      <section id="sortData" className="section-sort">
+        <Box sx={{ minWidth: 200, m: 4 }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">
+              Оберіть сортування
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={optionSort}
+              label="Оберіть сортування"
+              onChange={handleSort}
+            >
+              {sortOption}
+            </Select>
+          </FormControl>
+        </Box>
+        <OutputData isSort />
+      </section>
+    );
+  }
   return (
-    <section id="sortData" className="section-sort">
-      <div className="sort-container">
-        <h2>Сортування</h2>
-        <select onChange={handleSort} value={optionSort} defaultValue="">
-          <option value="" disabled>
-            Оберіть сортування
-          </option>
-          {sortOption}
-        </select>
-      </div>
-      <OutputData isSort />
+    <section id="sortData">
+      <h1>Спочатку введіть дані!</h1>
     </section>
   );
+  
 }
 
 export { SortData };

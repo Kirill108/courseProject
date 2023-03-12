@@ -121,7 +121,13 @@ function InputData(props) {
   const formSubmit = (event) => {
     event.preventDefault();
     if (phone.length === 10) {
-      FormSubmit(dataInput, setDataInput, salesData, updateSalesData, setIsFormSubmit);
+      FormSubmit(
+        dataInput,
+        setDataInput,
+        salesData,
+        updateSalesData,
+        setIsFormSubmit
+      );
     } else {
       alert("Введіть валідний номер телефону!");
     }
@@ -166,7 +172,7 @@ function InputData(props) {
     {
       className: "name",
       typeInput: "text",
-      placeholder: "Оберіть менеджера",
+      placeholder: "за менеджером",
       name: "name",
       id: 2,
       onChange: onChangeFio,

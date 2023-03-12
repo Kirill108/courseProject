@@ -19,23 +19,15 @@ function Button(props) {
     const newData = salesData.filter(
       (recorder) => recorder.item !== items.item
     );
-    updateSalesData(
-      newData.map((recorder, index) => ({
-        ...recorder,
-        item: index + 1,
-      }))
-    );
-
+    updateSalesData(newData);
   };
 
   const editRecorder = (items) => {
     dispatch(changeEditingRow(items));
-
   };
 
   const saveRecorder = (items) => {
     // dispatch(changeEditingRow(items));
-
   };
 
   if (isDelete) {
