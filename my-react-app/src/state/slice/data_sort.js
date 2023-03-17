@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { DEFAULT } from "../../const/const";
 
 const initialState = {
+  sortingData: [],
   optionSort: DEFAULT.VALUE,
 };
 
@@ -12,12 +13,15 @@ const DataSort = createSlice({
     changeOptionSort: (state, action) => {
       state.optionSort = action.payload;
     },
+    sortingData: (state, action) => {
+      state.sortingData = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = DataSort;
-const { changeOptionSort } = actions;
+const { changeOptionSort, sortingData } = actions;
 
 const sort = reducer;
 
-export { sort, changeOptionSort };
+export { sort, changeOptionSort, sortingData };

@@ -1,8 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { changeEditingRow } from "../../state/slice/editing_row";
+import { useState } from "react";
+import { changeEditingRow } from "../../state/slice/action_row";
+import Button from "@mui/material/Button";
+
 import "./button.css";
 
-function Button(props) {
+function ActionButton(props) {
   const {
     isDelete,
     item,
@@ -12,6 +15,7 @@ function Button(props) {
     isEdit,
   } = props;
 
+  const [confirmationDelete, setConfirmationDelete] = useState(false);
   const dispatch = useDispatch();
   const itemEditIcon = useSelector((store) => store.edit.editingRow);
 
@@ -20,29 +24,50 @@ function Button(props) {
       (recorder) => recorder.item !== items.item
     );
     updateSalesData(newData);
+    setConfirmationDelete(false);
   };
 
   const editRecorder = (items) => {
     dispatch(changeEditingRow(items));
   };
 
-  const saveRecorder = (items) => {
-    // dispatch(changeEditingRow(items));
-  };
-
   if (isDelete) {
+    if (confirmationDelete) {
+      return (
+        <>
+          <Button
+            sx={{ ml: 1, mr: 1 }}
+            onClick={() => {
+              deleteRecorder(item);
+            }}
+            variant="outlined"
+          >
+            Так
+          </Button>
+          <Button
+            onClick={() => {
+              setConfirmationDelete(false);
+            }}
+            variant="contained"
+          >
+            Ні
+          </Button>
+        </>
+      );
+    }
     return (
       <button
         type="button"
         className="button-delete"
         onClick={() => {
-          deleteRecorder(item);
+          setConfirmationDelete(true);
         }}
       >
         +
       </button>
     );
   }
+
   if (isEdit) {
     if (itemEditIcon !== item) {
       return (
@@ -57,19 +82,9 @@ function Button(props) {
         </button>
       );
     }
-    return (
-      <button
-        type="button"
-        className="button-save"
-        onClick={() => {
-          saveRecorder();
-        }}
-      >
-        save
-      </button>
-    );
   }
+
   return null;
 }
 
-export { Button };
+export { ActionButton };

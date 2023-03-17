@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "./button";
+import { ActionButton } from "./button";
 import { DeleteCategory } from "./delete_category";
 import { useSalesData } from "../../helper/use_sales_data";
 import "./edit-data.css";
 
 function OutputData(props) {
-  const { isDelete, isEdit, isSort } = props;
-  const salesData = useSelector((store) => store.dataSales.salesData);
+  const { isDelete, isEdit, optionSort } = props;
+  let salesData = useSelector((store) => store.dataSales.salesData);
+  const sortingData = useSelector((store) => store.sort.sortingData);
+  salesData = optionSort ? sortingData : salesData;
   const updateSalesData = useSalesData();
   // eslint-disable-next-line no-return-assign
   const editItem = useSelector((state) => state.edit.editingRow);
@@ -24,7 +26,7 @@ function OutputData(props) {
         <td>{item.fioClient}</td>
         <td>{item.phone}</td>
         <td className="button-action">
-          <Button
+          <ActionButton
             key={index}
             isDelete={isDelete}
             item={item}

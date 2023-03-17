@@ -29,7 +29,7 @@ function FormSubmit(
       setIsFormSubmit(false);
     }, 1000);
   } else {
-    alert("Уже есть такая запись!");
+    alert("Вже є такий запис!");
   }
 }
 

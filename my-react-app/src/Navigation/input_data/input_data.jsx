@@ -4,7 +4,7 @@ import { FormSubmit } from "./form_submit";
 import { DEFAULT } from "../../const/const";
 import { MANAGER, TOVAR, MAX_LENGTH } from "../../const/const";
 import { useSelector, useDispatch } from "react-redux";
-import { changeEditingRow } from "../../state/slice/editing_row";
+import { changeEditingRow } from "../../state/slice/action_row";
 import { useSalesData } from "../../helper/use_sales_data";
 
 function InputData(props) {
@@ -111,10 +111,6 @@ function InputData(props) {
     setPhone,
     setDateSale,
   ];
-
-  function resetInput() {
-    setDataInput.map((setData) => setData(DEFAULT.VALUE));
-  }
 
   const updateSalesData = useSalesData();
 

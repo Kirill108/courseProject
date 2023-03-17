@@ -2,11 +2,26 @@ import { createSlice } from "@reduxjs/toolkit";
 
 let salesData;
 
-try {
-  salesData = JSON.parse(localStorage.getItem("salesData"));
-} catch(error) {
-  alert(error)
+async function fetchData() {
+  try {
+    const response = await fetch("http://localhost:3001/api/read_json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    // console.error(error);
+  }
 }
+
+salesData = await fetchData();
+
+// try {
+//   salesData = JSON.parse(localStorage.getItem("salesData"));
+// } catch(error) {
+//   alert(error)
+// }
 
 const initialState = {
   salesData: salesData ?? [],

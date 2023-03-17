@@ -7,14 +7,15 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import PropTypes from "prop-types";
 import { textAlign } from "@mui/system";
+import { DEFAULT } from "../../const/const";
 
 function DeleteCategory(props) {
   const { isDelete, salesData, updateSalesData } = props;
 
-  const [valueOption, setValueOption] = useState();
-  const [valueOptionTovar, setValueOptionTovar] = useState();
-  const [optionPhone, setOptionPhone] = useState();
-  const [optionItem, setOptionItem] = useState();
+  const [valueOption, setValueOption] = useState(DEFAULT.VALUE);
+  const [valueOptionTovar, setValueOptionTovar] = useState(DEFAULT.VALUE);
+  const [optionPhone, setOptionPhone] = useState(DEFAULT.VALUE);
+  const [optionItem, setOptionItem] = useState(DEFAULT.VALUE);
 
   const salesManagers = Array.from(
     new Set(salesData.map((item) => item.salesManager))
@@ -98,29 +99,6 @@ function DeleteCategory(props) {
     }
   };
 
-  function Item(props) {
-    const { sx, ...other } = props;
-    return (
-      <Box
-        sx={{
-          bgcolor: (theme) =>
-            theme.palette.mode === "dark" ? "#101010" : "#fff",
-          color: (theme) =>
-            theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-          border: "1px solid",
-          borderColor: (theme) =>
-            theme.palette.mode === "dark" ? "grey.800" : "grey.300",
-          p: 1,
-          borderRadius: 2,
-          fontSize: "0.875rem",
-          fontWeight: "700",
-          ...sx,
-        }}
-        {...other}
-      />
-    );
-  }
-
   if (isDelete) {
     return (
       // <div className="container-form-delete">
@@ -140,8 +118,6 @@ function DeleteCategory(props) {
             display: "grid",
             gap: 1,
             gridTemplateColumns: "repeat(2, 1fr)",
-            // mt: -30,
-            // mb: 10,
           }}
         >
           <Box sx={{ minWidth: 200, pr: 5 }}>

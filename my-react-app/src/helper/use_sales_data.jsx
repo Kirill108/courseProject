@@ -8,19 +8,16 @@ function useSalesData() {
   const updateSalesData = useCallback(
     (salesData) => {
       try {
-        localStorage.setItem("salesData", JSON.stringify(salesData));
+        // localStorage.setItem("salesData", JSON.stringify(salesData));
+        const newSalesData = salesData.map((recorder, index) => ({
+          ...recorder,
+          item: index + 1,
+        }));
         fetch("http://localhost:3001/api/update_json", {
           method: "POST",
-          body: JSON.stringify(salesData),
+          body: JSON.stringify(newSalesData),
         });
-        dispatch(
-          changeSalesData(
-            salesData.map((recorder, index) => ({
-              ...recorder,
-              item: index + 1,
-            }))
-          )
-        );
+        dispatch(changeSalesData(newSalesData));
       } catch (error) {
         alert(error);
       }
