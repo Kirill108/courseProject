@@ -13,7 +13,7 @@ function AllModal() {
       <h2>Видалити запис?</h2>
       <Button
         onClick={() => {
-          dispatch(confirmDelete(true));
+          alert("yes")
         }}
         variant="outlined"
       >

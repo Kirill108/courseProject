@@ -1,5 +1,6 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useMemo } from "react";
 import { ActionButton } from "./button";
 import { DeleteCategory } from "./delete_category";
 import { useSalesData } from "../../helper/use_sales_data";
@@ -12,32 +13,34 @@ function OutputData(props) {
   salesData = optionSort ? sortingData : salesData;
   const updateSalesData = useSalesData();
   // eslint-disable-next-line no-return-assign
-  const editItem = useSelector((state) => state.edit.editingRow);
-  const tableData = salesData.map((item, index) => (
-    <React.Fragment key={index}>
-      <tr>
-        <td>{item.item}</td>
-        <td>{item.dateSale}</td>
-        <td>{item.salesManager}</td>
-        <td>{item.nameTovar}</td>
-        <td>{item.amountTovar}</td>
-        <td>{item.priceOne}</td>
-        <td>{item.pay}</td>
-        <td>{item.fioClient}</td>
-        <td>{item.phone}</td>
-        <td className="button-action">
-          <ActionButton
-            key={index}
-            isDelete={isDelete}
-            item={item}
-            salesData={salesData}
-            updateSalesData={updateSalesData}
-            isEdit={isEdit}
-          />
-        </td>
-      </tr>
-    </React.Fragment>
-  ));
+
+  const tableData = useMemo(
+    () =>
+      salesData.map((item, index) => (
+        <tr key={index}>
+          <td>{item.item}</td>
+          <td>{item.dateSale}</td>
+          <td>{item.salesManager}</td>
+          <td>{item.nameTovar}</td>
+          <td>{item.amountTovar}</td>
+          <td>{item.priceOne}</td>
+          <td>{item.pay}</td>
+          <td>{item.fioClient}</td>
+          <td>{item.phone}</td>
+          <td className="button-action">
+            <ActionButton
+              key={index}
+              isDelete={isDelete}
+              item={item}
+              salesData={salesData}
+              updateSalesData={updateSalesData}
+              isEdit={isEdit}
+            />
+          </td>
+        </tr>
+      )),
+    [salesData, isDelete, isEdit]
+  );
 
   if (salesData.length) {
     return (

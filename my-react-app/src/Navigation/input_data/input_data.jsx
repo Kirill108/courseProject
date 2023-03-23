@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Input } from "./Input";
 import { FormSubmit } from "./form_submit";
 import { DEFAULT } from "../../const/const";
@@ -155,75 +155,79 @@ function InputData(props) {
     }
   };
 
-  const inputConfig = [
-    {
-      className: "name",
-      typeInput: "date",
-      placeholder: "Дата продажу",
-      name: "name",
-      id: 1,
-      onChange: onChangeDateSale,
-      value: dateSale,
-    },
-    {
-      className: "name",
-      typeInput: "text",
-      placeholder: "за менеджером",
-      name: "name",
-      id: 2,
-      onChange: onChangeFio,
-      value: fio,
-      isSelect: true,
-      dataSelect: MANAGER,
-    },
-    {
-      className: "name",
-      typeInput: "text",
-      placeholder: "Оберіть товар",
-      name: "name",
-      id: 3,
-      onChange: onChangeNameTovar,
-      value: nameTovar,
-      isSelect: true,
-      dataSelect: TOVAR,
-    },
-    {
-      className: "name",
-      typeInput: "text",
-      placeholder: "Кількість товару",
-      name: "name",
-      id: 4,
-      onChange: onChangeAmountTovar,
-      value: amountTovar,
-    },
-    {
-      className: "name",
-      typeInput: "text",
-      placeholder: "Ціна за одиницю",
-      name: "name",
-      id: 5,
-      onChange: onChangePriceOne,
-      value: priceOne,
-    },
-    {
-      className: "name",
-      typeInput: "text",
-      placeholder: "ПІБ клієнта",
-      name: "name",
-      id: 6,
-      onChange: onChangeFioClient,
-      value: fioClient,
-    },
-    {
-      className: "name",
-      typeInput: "text",
-      placeholder: "телефон (095562359)",
-      name: "name",
-      id: 7,
-      onChange: onChangePhone,
-      value: phone,
-    },
-  ];
+  const inputConfig = useMemo(
+    () => [
+      {
+        className: "name",
+        typeInput: "date",
+        placeholder: "Дата продажу",
+        name: "name",
+        id: 1,
+        onChange: onChangeDateSale,
+        value: dateSale,
+      },
+      {
+        className: "name",
+        typeInput: "text",
+        placeholder: "за менеджером",
+        name: "name",
+        id: 2,
+        onChange: onChangeFio,
+        value: fio,
+        isSelect: true,
+        dataSelect: MANAGER,
+      },
+      {
+        className: "name",
+        typeInput: "text",
+        placeholder: "Оберіть товар",
+        name: "name",
+        id: 3,
+        onChange: onChangeNameTovar,
+        value: nameTovar,
+        isSelect: true,
+        dataSelect: TOVAR,
+      },
+      {
+        className: "name",
+        typeInput: "text",
+        placeholder: "Кількість товару",
+        name: "name",
+        id: 4,
+        onChange: onChangeAmountTovar,
+        value: amountTovar,
+      },
+      {
+        className: "name",
+        typeInput: "text",
+        placeholder: "Ціна за одиницю",
+        name: "name",
+        id: 5,
+        onChange: onChangePriceOne,
+        value: priceOne,
+      },
+      {
+        className: "name",
+        typeInput: "text",
+        placeholder: "ПІБ клієнта",
+        name: "name",
+        id: 6,
+        onChange: onChangeFioClient,
+        value: fioClient,
+      },
+      {
+        className: "name",
+        typeInput: "text",
+        placeholder: "телефон (095562359)",
+        name: "name",
+        id: 7,
+        onChange: onChangePhone,
+        value: phone,
+      },
+    ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dateSale, fio, nameTovar, amountTovar, priceOne, fioClient, phone]
+  );
 
   const input = inputConfig.map(
     ({
