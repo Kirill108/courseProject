@@ -45,7 +45,7 @@ function DeleteCategory(props) {
                 sx={{ justifyContent: "center" }}
               >
                 <Tab label="одразу" value="1" />
-                <Tab label="показати список" value="2" />
+                <Tab label="фільтрація" value="2" />
                 {/* <Tab label="Item Three" value="3" /> */}
               </TabList>
             </Box>

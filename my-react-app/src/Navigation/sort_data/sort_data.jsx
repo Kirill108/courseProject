@@ -30,7 +30,7 @@ function SortData() {
   };
 
   const handleReset = () => {
-    setOptionSort(DEFAULT.value);
+    setOptionSort(DEFAULT.VALUE);
   };
 
   if (dataSale.length) {

@@ -20,6 +20,7 @@ function ActionButton(props) {
   const itemEditIcon = useSelector((store) => store.edit.editingRow);
 
   const deleteRecorder = (items) => {
+    console.log('items: ', items);
     const newData = salesData.filter(
       (recorder) => recorder.item !== items.item
     );

@@ -1,18 +1,34 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { ActionButton } from "./button";
 import { DeleteCategory } from "./delete_category";
 import { useSalesData } from "../../helper/use_sales_data";
+import { ListOptionDeleteContext } from "../../context/list_delete";
+import Button from "@mui/material/Button";
 import "./edit-data.css";
 
 function OutputData(props) {
   const { isDelete, isEdit, optionSort } = props;
+
+  const [listOptionDelete, setListOptionDelete] = useState(null);
+
   let salesData = useSelector((store) => store.dataSales.salesData);
   const sortingData = useSelector((store) => store.sort.sortingData);
-  salesData = optionSort ? sortingData : salesData;
+
+  // salesData = optionSort ? sortingData : salesData;
+  if (optionSort) {
+    salesData = sortingData;
+  } else if (listOptionDelete) {
+    salesData = listOptionDelete;
+  }
+
   const updateSalesData = useSalesData();
   // eslint-disable-next-line no-return-assign
+
+  const handleReset = () => {
+    setListOptionDelete(null);
+  };
 
   const tableData = useMemo(
     () =>
@@ -45,11 +61,22 @@ function OutputData(props) {
   if (salesData.length) {
     return (
       <section id="outputData">
-        <DeleteCategory
-          isDelete={isDelete}
-          salesData={salesData}
-          updateSalesData={updateSalesData}
-        />
+        <ListOptionDeleteContext.Provider value={setListOptionDelete}>
+          <DeleteCategory
+            isDelete={isDelete}
+            salesData={salesData}
+            updateSalesData={updateSalesData}
+          />
+          {listOptionDelete ? (
+            <Button
+              sx={{ minWidth: 200, mt: 2 }}
+              variant="outlined"
+              onClick={handleReset}
+            >
+              скинути фільтрацію
+            </Button>
+          ) : null}
+        </ListOptionDeleteContext.Provider>
         <div className="scrol">
           <table>
             <caption>Дані продажу</caption>
