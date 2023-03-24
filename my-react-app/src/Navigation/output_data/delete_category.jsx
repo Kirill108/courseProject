@@ -24,7 +24,7 @@ function DeleteCategory(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          mt: -30,
+          mt: 0,
           mb: 10,
         }}
       >

@@ -1,8 +1,43 @@
 .edit-input-date {
-	margin: 0px;
-	border: none;
+  margin: 0px;
+  border: none;
 }
 
 .button-action {
-	border: none;
+  border: none;
 }
+
+.scrol {
+  /* overflow: auto; */
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 40px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+  background: linear-gradient(180deg, #00c6fb, #005bea);
+}
+
+/* SCROLLBAR */
+/* Let get this party started */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(119, 133, 236);
+  border: 4px solid transparent;
+  background-clip: content-box; /* THIS IS IMPORTANT */
+}
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: rgb(25, 25, 25);
+  border: 1px solid rgb(0, 0, 0);
+} */

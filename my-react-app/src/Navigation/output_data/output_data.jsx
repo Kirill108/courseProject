@@ -50,23 +50,25 @@ function OutputData(props) {
           salesData={salesData}
           updateSalesData={updateSalesData}
         />
-        <table>
-          <caption>Дані продажу</caption>
-          <thead>
-            <tr>
-              <th>№ п/п</th>
-              <th>Дата продажу</th>
-              <th>Менеджер з продажу</th>
-              <th>Назва товару</th>
-              <th>кількість товару</th>
-              <th>ціна за одиницю</th>
-              <th>сума до сплати</th>
-              <th>ПІБ Клієнта</th>
-              <th>номер телефону клієнта</th>
-            </tr>
-          </thead>
-          <tbody>{tableData}</tbody>
-        </table>
+        <div className="scrol">
+          <table>
+            <caption>Дані продажу</caption>
+            <thead>
+              <tr>
+                <th>№ п/п</th>
+                <th>Дата продажу</th>
+                <th>Менеджер з продажу</th>
+                <th>Назва товару</th>
+                <th>кількість товару</th>
+                <th>ціна за одиницю</th>
+                <th>сума до сплати</th>
+                <th>ПІБ Клієнта</th>
+                <th>номер телефону клієнта</th>
+              </tr>
+            </thead>
+            <tbody>{tableData}</tbody>
+          </table>
+        </div>
       </section>
     );
   }

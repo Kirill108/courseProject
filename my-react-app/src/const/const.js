@@ -31,4 +31,10 @@ const SORT = {
   AMOUNT_TOVAR_DESCENDING: "кількість товару (спадання)",
 };
 
-export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH, SORT };
+const TYPE_DELETE = {
+  MANAGER: "manager",
+  TOVAR: "tovar",
+  PHONE: "phone",
+};
+
+export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH, SORT, TYPE_DELETE };

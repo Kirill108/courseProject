@@ -5,6 +5,9 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { DEFAULT } from "../../../const/const";
+import { Grid } from "@mui/material";
+import { TYPE_DELETE } from "../../../const/const";
+import { SelectFilter } from "./select_filter/select_filter";
 
 function UiSelect(props) {
   const { salesData, updateSalesData, isList } = props;
@@ -12,7 +15,6 @@ function UiSelect(props) {
   const [valueOption, setValueOption] = useState(DEFAULT.VALUE);
   const [valueOptionTovar, setValueOptionTovar] = useState(DEFAULT.VALUE);
   const [optionPhone, setOptionPhone] = useState(DEFAULT.VALUE);
-  //   const [optionItem, setOptionItem] = useState(DEFAULT.VALUE);
 
   const salesManagers = useMemo(
     () => Array.from(new Set(salesData.map((item) => item.salesManager))),
@@ -29,88 +31,112 @@ function UiSelect(props) {
     [salesData]
   );
 
-  //   const allItem = useMemo(
-  //     () => Array.from(new Set(salesData.map((item) => item.item))),
-  //     [salesData]
-  //   );
-
   const allManager = ListReact(salesManagers);
 
   const allTovar = ListReact(allProducts);
 
   const JSX_AllPhone = ListReact(allNumberPhone);
 
-  //   const JSX_AllItem = ListReact(allItem);
-
-  const onChangeValueOption = (event) => {
+  const handleOptionChange = (event, filterType) => {
     const option = event.target.value;
-    setValueOption(option);
+
+    let setState;
+    let filterParam;
+    let filterParam2;
+
+    switch (filterType) {
+      case TYPE_DELETE.MANAGER:
+        setState = setValueOption;
+        filterParam = "salesManager";
+        filterParam2 = salesManagers[0];
+        break;
+      case TYPE_DELETE.TOVAR:
+        setState = setValueOptionTovar;
+        filterParam = "nameTovar";
+        filterParam2 = allProducts[0];
+        break;
+      case TYPE_DELETE.PHONE:
+        setState = setOptionPhone;
+        filterParam = "phone";
+        filterParam2 = allNumberPhone[0];
+        break;
+      default:
+        break;
+    }
+
+    setState(option);
 
     event.preventDefault();
     updateSalesData(
-      salesData.filter((recorder) => recorder.salesManager !== option)
+      salesData.filter((recorder) => recorder[filterParam] !== option)
     );
     if (allManager.length === 1) {
       updateSalesData(
-        salesData.filter(
-          (recorder) => recorder.salesManager !== salesManagers[0]
-        )
+        salesData.filter((recorder) => recorder[filterParam] !== filterParam2)
       );
     }
-  };
-
-  const onChangeValueTovar = (event) => {
-    const option = event.target.value;
-    setValueOptionTovar(option);
 
     event.preventDefault();
-    updateSalesData(
-      salesData.filter((recorder) => recorder.nameTovar !== option)
-    );
-    if (allTovar.length === 1) {
-      updateSalesData(
-        salesData.filter((recorder) => recorder.nameTovar !== allProducts[0])
-      );
-    }
   };
 
-  const onChangeValuePhone = (event) => {
-    const option = event.target.value;
-    setOptionPhone(option);
-
-    event.preventDefault();
-    updateSalesData(salesData.filter((recorder) => recorder.phone !== option));
-    if (JSX_AllPhone.length === 1) {
-      updateSalesData(
-        salesData.filter((recorder) => recorder.phone !== allNumberPhone[0])
-      );
-    }
-  };
-
-  //   const onChangeValueItem = (event) => {
-  //     const option = event.target.value;
-  //     setOptionItem(option);
-
-  //     event.preventDefault();
-  //     updateSalesData(
-  //       salesData.filter((recorder) => recorder.item !== Number(option))
-  //     );
-  //     if (JSX_AllItem.length === 1) {
-  //       updateSalesData(
-  //         salesData.filter((recorder) => recorder.item !== allItem[0])
-  //       );
-  //     }
-  //   };
+  const selectConfig = [
+    {
+      label: "за менеджером",
+      value: valueOption,
+      onChange: (event) => {
+        handleOptionChange(event, TYPE_DELETE.MANAGER);
+      },
+      options: allManager,
+    },
+    {
+      label: "за товаром",
+      value: valueOptionTovar,
+      onChange: (event) => {
+        handleOptionChange(event, TYPE_DELETE.TOVAR);
+      },
+      options: allTovar,
+    },
+    {
+      label: "за номером телефона",
+      value: optionPhone,
+      onChange: (event) => {
+        handleOptionChange(event, TYPE_DELETE.PHONE);
+      },
+      options: JSX_AllPhone,
+    },
+  ];
 
   return (
-    <Box
-      sx={{
-        display: "grid",
-        gap: 1,
-        gridTemplateColumns: "repeat(2, 1fr)",
-      }}
-    >
-      <Box sx={{ minWidth: 200, pr: 5 }}>
+    <Grid container spacing={3}>
+      {selectConfig.map((config, index) => (
+        <SelectFilter key={index} {...config} />
+      ))}
+
+      {/* <SelectFilter
+        label="за менеджером"
+        value={valueOption}
+        onChange={(event) => {
+          handleOptionChange(event, TYPE_DELETE.MANAGER);
+        }}
+        options={allManager}
+      />
+      <SelectFilter
+        label="за товаром"
+        value={valueOptionTovar}
+        onChange={(event) => {
+          handleOptionChange(event, TYPE_DELETE.TOVAR);
+        }}
+        options={allTovar}
+      />
+      <SelectFilter
+        label="за номером телефона"
+        value={optionPhone}
+        onChange={(event) => {
+          handleOptionChange(event, TYPE_DELETE.PHONE);
+        }}
+        options={JSX_AllPhone}
+      /> */}
+      {/* <Grid item xs={6} sx={{ pr: 5 }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">за менеджером</InputLabel>
           <Select
@@ -118,14 +144,17 @@ function UiSelect(props) {
             id="demo-simple-select"
             value={valueOption}
             label="за менеджером"
-            onChange={onChangeValueOption}
+            onChange={(event) => {
+              handleOptionChange(event, TYPE_DELETE.MANAGER);
+            }}
+            // onChange={onChangeValueOption}
           >
             {allManager}
           </Select>
         </FormControl>
-      </Box>
+      </Grid>
 
-      <Box sx={{ minWidth: 220, pr: 5 }}>
+      <Grid item xs={6} sx={{ minWidth: 220, pr: 5 }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">за товаром</InputLabel>
           <Select
@@ -133,13 +162,16 @@ function UiSelect(props) {
             id="demo-simple-select"
             value={valueOptionTovar}
             label="за товаром"
-            onChange={onChangeValueTovar}
+            onChange={(event) => {
+              handleOptionChange(event, TYPE_DELETE.TOVAR);
+            }}
+            // onChange={onChangeValueTovar}
           >
             {allTovar}
           </Select>
         </FormControl>
-      </Box>
-      <Box sx={{ minWidth: 220, pr: 5 }}>
+      </Grid>
+      <Grid item xs={6} sx={{ minWidth: 220, pr: 5 }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">
             за номером телефона
@@ -149,29 +181,16 @@ function UiSelect(props) {
             id="demo-simple-select"
             value={optionPhone}
             label="за номером телефона"
-            onChange={onChangeValuePhone}
+            onChange={(event) => {
+              handleOptionChange(event, TYPE_DELETE.PHONE);
+            }}
+            // onChange={onChangeValuePhone}
           >
             {JSX_AllPhone}
           </Select>
         </FormControl>
-      </Box>
-      {/* <Box sx={{ minWidth: 200, pr: 5 }}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">
-            за номером запису
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={optionItem}
-            label="за номером запису"
-            onChange={onChangeValueItem}
-          >
-            {JSX_AllItem}
-          </Select>
-        </FormControl>
-      </Box> */}
-    </Box>
+      </Grid> */}
+    </Grid>
   );
 }
 

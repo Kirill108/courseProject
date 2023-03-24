@@ -26,7 +26,6 @@ function SortData() {
     setOptionSort(typeSort);
 
     const sortArr = sorting(dataSale, typeSort);
-    console.log("sortArr: ", sortArr);
     dispatch(sortingData(sortArr));
   };
 
