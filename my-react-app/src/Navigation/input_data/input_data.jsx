@@ -261,7 +261,7 @@ function InputData(props) {
       <div id="container">
         <h1>&bull; {isEdit ? "Редагувати" : "Введіть"} дані продажу &bull;</h1>
         <div className="underline" />
-        <form
+        <form className="form"
           action="#"
           method="post"
           id="contact_form"

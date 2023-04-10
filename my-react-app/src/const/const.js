@@ -37,4 +37,8 @@ const TYPE_DELETE = {
   PHONE: "phone",
 };
 
+// const REQUEST = {
+//   DATA: "",
+// }
+
 export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH, SORT, TYPE_DELETE };

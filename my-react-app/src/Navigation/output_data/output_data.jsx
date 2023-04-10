@@ -9,18 +9,23 @@ import Button from "@mui/material/Button";
 import "./edit-data.css";
 
 function OutputData(props) {
-  const { isDelete, isEdit, optionSort } = props;
+  const { isDelete, isEdit, optionSort, isRequest } = props;
 
   const [listOptionDelete, setListOptionDelete] = useState(null);
 
   let salesData = useSelector((store) => store.dataSales.salesData);
   const sortingData = useSelector((store) => store.sort.sortingData);
+  const requestData = useSelector((store) => store.request.requestData);
 
   // salesData = optionSort ? sortingData : salesData;
   if (optionSort) {
     salesData = sortingData;
   } else if (listOptionDelete) {
     salesData = listOptionDelete;
+  } else if (isRequest) {
+    if (requestData.length) {
+      salesData = requestData;
+    }
   }
 
   const updateSalesData = useSalesData();
