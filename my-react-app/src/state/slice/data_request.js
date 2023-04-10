@@ -29,8 +29,8 @@ const DataRequest = createSlice({
 });
 
 const { actions, reducer } = DataRequest;
-const { changeOptionSort, sortingData } = actions;
+const { dataOutputPayment, searchCriteriaRequest } = actions;
 
 const request = reducer;
 
-export { request, changeOptionSort, sortingData };
+export { request, dataOutputPayment, searchCriteriaRequest };
