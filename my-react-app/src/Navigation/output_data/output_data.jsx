@@ -29,11 +29,6 @@ function OutputData(props) {
   }
 
   const updateSalesData = useSalesData();
-  // eslint-disable-next-line no-return-assign
-
-  const handleReset = () => {
-    setListOptionDelete(null);
-  };
 
   const tableData = useMemo(
     () =>
@@ -56,6 +51,8 @@ function OutputData(props) {
               salesData={salesData}
               updateSalesData={updateSalesData}
               isEdit={isEdit}
+              setListOptionDelete={setListOptionDelete}
+              listOptionDelete={listOptionDelete}
             />
           </td>
         </tr>
@@ -72,15 +69,6 @@ function OutputData(props) {
             salesData={salesData}
             updateSalesData={updateSalesData}
           />
-          {listOptionDelete ? (
-            <Button
-              sx={{ minWidth: 200, mt: 2 }}
-              variant="outlined"
-              onClick={handleReset}
-            >
-              скинути фільтрацію
-            </Button>
-          ) : null}
         </ListOptionDeleteContext.Provider>
         <div className="scrol">
           <table>

@@ -1,4 +1,5 @@
 import { useState, useMemo, useContext } from "react";
+import { useSelector } from "react-redux";
 import { ListReact } from "../../../helper/react_list";
 import { DEFAULT } from "../../../const/const";
 import { Grid } from "@mui/material";
@@ -6,13 +7,18 @@ import { TYPE_DELETE } from "../../../const/const";
 import { SelectFilter } from "./select_filter/select_filter";
 import { getUniqueValues } from "../../../helper/get_uniqe_values";
 import { ListOptionDeleteContext } from "../../../context/list_delete";
+import Button from "@mui/material/Button";
 
 function UiSelect(props) {
   const { salesData, updateSalesData, isList } = props;
 
+  const [oldData, setOldData] = useState(null);
+
   const [valueOption, setValueOption] = useState(DEFAULT.VALUE);
   const [valueOptionTovar, setValueOptionTovar] = useState(DEFAULT.VALUE);
   const [optionPhone, setOptionPhone] = useState(DEFAULT.VALUE);
+
+  const [isFilter, setIsFilter] = useState(false);
 
   const setListOptionDelete = useContext(ListOptionDeleteContext);
 
@@ -34,6 +40,16 @@ function UiSelect(props) {
   const allTovar = ListReact(allProducts);
 
   const JSX_AllPhone = ListReact(allNumberPhone);
+
+  const handleReset = () => {
+    updateSalesData(salesData.concat(oldData));
+    setIsFilter(false);
+    setListOptionDelete(null);
+    setOldData(null);
+    setValueOption(DEFAULT.VALUE);
+    setValueOptionTovar(DEFAULT.VALUE);
+    setOptionPhone(DEFAULT.VALUE);
+  };
 
   const handleOptionChange = (event, filterType) => {
     const option = event.target.value;
@@ -75,6 +91,11 @@ function UiSelect(props) {
         );
       }
     } else {
+      if (!oldData) {
+        setOldData(
+          salesData.filter((recorder) => recorder[filterParam] !== option)
+        );
+      }
       setListOptionDelete(
         salesData.filter((recorder) => recorder[filterParam] === option)
       );
@@ -83,6 +104,7 @@ function UiSelect(props) {
           salesData.filter((recorder) => recorder[filterParam] === filterParam2)
         );
       }
+      setIsFilter(true);
     }
   };
 
@@ -114,11 +136,22 @@ function UiSelect(props) {
   ];
 
   return (
-    <Grid container spacing={3}>
-      {selectConfig.map((config, index) => (
-        <SelectFilter key={index} {...config} />
-      ))}
-    </Grid>
+    <>
+      <Grid container spacing={3}>
+        {selectConfig.map((config, index) => (
+          <SelectFilter key={index} {...config} />
+        ))}
+      </Grid>
+      {isFilter ? (
+        <Button
+          sx={{ minWidth: 200, mt: 2, ml: 27 }}
+          variant="outlined"
+          onClick={handleReset}
+        >
+          скинути фільтрацію
+        </Button>
+      ) : null}
+    </>
   );
 }
 

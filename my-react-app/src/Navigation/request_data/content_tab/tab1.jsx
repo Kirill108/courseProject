@@ -16,7 +16,7 @@ function Tab1() {
         sx={{
           mt: 1,
           maxWidth: 200,
-		  margin: "auto",
+          margin: "auto",
         }}
       >
         <label htmlFor="datePicker">Виберіть дату</label>

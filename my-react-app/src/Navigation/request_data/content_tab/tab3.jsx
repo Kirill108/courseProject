@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { getUniqueValues } from "../../../helper/get_uniqe_values";
 import { useSelector, useDispatch } from "react-redux";
 import { ListReact } from "../../../helper/react_list";
-import { searchCriteriaRequest } from "../../../state/slice/data_request";
+import { handleRequest } from "../../../state/slice/data_request";
 
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -51,14 +51,19 @@ function Tab3() {
         item.amountTovar > Number(from) &&
         item.amountTovar < Number(to)
     );
-
-    dispatch(searchCriteriaRequest(resultSearch));
-    setIsResetRequest(true);
+    if (resultSearch.length) {
+      dispatch(handleRequest(resultSearch));
+      setIsResetRequest(true);
+    } else {
+      alert(
+        `Немає записів для товару "${tovar}" з кількістью від ${from} до ${to}`
+      );
+    }
   };
 
   const handleReset = (event) => {
     setIsResetRequest(false);
-    dispatch(searchCriteriaRequest([]));
+    dispatch(handleRequest([]));
     setTovar(DEFAULT.VALUE);
     setFrom(DEFAULT.VALUE);
     setTo(DEFAULT.VALUE);

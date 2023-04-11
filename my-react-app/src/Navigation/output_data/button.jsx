@@ -13,6 +13,8 @@ function ActionButton(props) {
     updateSalesData,
 
     isEdit,
+    setListOptionDelete,
+    listOptionDelete,
   } = props;
 
   const [confirmationDelete, setConfirmationDelete] = useState(false);
@@ -20,10 +22,12 @@ function ActionButton(props) {
   const itemEditIcon = useSelector((store) => store.edit.editingRow);
 
   const deleteRecorder = (items) => {
-    console.log('items: ', items);
     const newData = salesData.filter(
       (recorder) => recorder.item !== items.item
     );
+    if (listOptionDelete) {
+      setListOptionDelete(null);
+    }
     updateSalesData(newData);
     setConfirmationDelete(false);
   };

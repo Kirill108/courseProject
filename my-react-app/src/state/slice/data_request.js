@@ -10,27 +10,15 @@ const DataRequest = createSlice({
   name: "dataRequest",
   initialState,
   reducers: {
-    dateRequest: (state, action) => {
-      state.requestData = action.payload;
-    },
-    sellingPriceRequest: (state, action) => {
-      state.requestData = action.payload;
-    },
-    searchCriteriaRequest: (state, action) => {
-      state.requestData = action.payload;
-    },
-    dataOutputPayment: (state, action) => {
-      state.requestData = action.payload;
-    },
-    OutputFourTovar: (state, action) => {
+    handleRequest: (state, action) => {
       state.requestData = action.payload;
     },
   },
 });
 
 const { actions, reducer } = DataRequest;
-const { dataOutputPayment, searchCriteriaRequest } = actions;
+const { handleRequest } = actions;
 
 const request = reducer;
 
-export { request, dataOutputPayment, searchCriteriaRequest };
+export { request, handleRequest };

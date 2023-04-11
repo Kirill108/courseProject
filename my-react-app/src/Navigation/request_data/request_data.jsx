@@ -7,6 +7,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 
 import { Tab1 } from "./content_tab/tab1";
+import { Tab2 } from "./content_tab/tab2";
 import { Tab3 } from "./content_tab/tab3";
 import { Tab4 } from "./content_tab/tab4";
 
@@ -49,8 +50,7 @@ function RequestData() {
             <Tab1 />
           </TabPanel>
           <TabPanel value="2">
-            розрахувати загальну вартість продажу за ПІБ менеджера, значення
-            якого було введено користувачем
+            <Tab2 />
           </TabPanel>
           <TabPanel value="3">
             <Tab3 />

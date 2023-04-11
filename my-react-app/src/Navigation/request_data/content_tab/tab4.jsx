@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { DEFAULT } from "../../../const/const";
-import { dataOutputPayment } from "../../../state/slice/data_request";
+import { handleRequest } from "../../../state/slice/data_request";
 
 import Box from "@mui/material/Box";
 import Input from "@mui/joy/Input";
@@ -22,7 +22,7 @@ function Tab4() {
 
   const handleReset = (event) => {
     setIsResetRequest(false);
-    dispatch(dataOutputPayment([]));
+    dispatch(handleRequest([]));
     setInputNumber(DEFAULT.VALUE);
   };
 
@@ -35,7 +35,7 @@ function Tab4() {
       return item.pay < inputNumber;
     });
     if (resultRequest.length) {
-      dispatch(dataOutputPayment(resultRequest));
+      dispatch(handleRequest(resultRequest));
       setIsResetRequest(true);
       // setInputNumber(DEFAULT.VALUE);
     } else {
