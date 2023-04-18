@@ -10,6 +10,7 @@ import { Tab1 } from "./content_tab/tab1";
 import { Tab2 } from "./content_tab/tab2";
 import { Tab3 } from "./content_tab/tab3";
 import { Tab4 } from "./content_tab/tab4";
+import { Tab5 } from "./content_tab/tab5";
 
 function RequestData() {
   const [tabActive, setTabActive] = useState("1");
@@ -59,7 +60,7 @@ function RequestData() {
             <Tab4 />
           </TabPanel>
           <TabPanel value="5">
-            виведення 4 товарів з найменшою та найбільшою ціною
+            <Tab5 />
           </TabPanel>
         </TabContext>
       </Box>

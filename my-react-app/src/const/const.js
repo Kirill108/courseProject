@@ -37,8 +37,14 @@ const TYPE_DELETE = {
   PHONE: "phone",
 };
 
+const TO_PAY = {
+  FOUR_LARGEST: "4 найбільших",
+  FOUR_LEAST: "4 найменших",
+  TOGETHER: "Разом",
+};
+
 // const REQUEST = {
 //   DATA: "",
 // }
 
-export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH, SORT, TYPE_DELETE };
+export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH, SORT, TYPE_DELETE, TO_PAY };
