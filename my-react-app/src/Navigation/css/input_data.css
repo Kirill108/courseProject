@@ -22,10 +22,10 @@ body {
 
 input[type="text"],
 [type="date"],
-[type="number"],
 [type="phone"],
 select,
-textarea {
+textarea,
+.number-input {
   background: none;
   border: none;
   border-bottom: solid 2px #474544;
@@ -38,23 +38,22 @@ textarea {
   width: 110%;
   box-sizing: border-box;
   transition: all 0.3s;
-  outline-color: rgb(221, 255, 255);
+  outline: none;
 }
 
 .select_date {
   margin-right: 50px;
   width: 55%;
 }
-
+/* 
 input[type="text"]:focus,
 [type="email"]:focus,
-[type="number"]:focus,
 [type="phone"]:focus,
 [type="date"]:focus,
 textarea:focus {
   outline: none;
   padding: 0 0 0.875em 0;
-}
+} */
 
 ::-webkit-input-placeholder {
   color: #474544;

@@ -203,6 +203,7 @@ function InputData(props) {
         id: 4,
         onChange: onChangeAmountTovar,
         value: amountTovar,
+        special: "number-input",
       },
       {
         className: "name",
@@ -212,6 +213,7 @@ function InputData(props) {
         id: 5,
         onChange: onChangePriceOne,
         value: priceOne,
+        special: "number-input",
       },
       {
         className: "name",
@@ -247,6 +249,7 @@ function InputData(props) {
       value,
       isSelect,
       dataSelect,
+      special,
     }) => (
       <Input
         key={id}
@@ -260,6 +263,7 @@ function InputData(props) {
         isSelect={isSelect}
         dataSelect={dataSelect}
         isEdit={isEdit}
+        special={special}
       />
     )
   );

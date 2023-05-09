@@ -1,83 +1,38 @@
-# Подготовка к старту
+# Як запустити проєкт
 
 ---
 
-## Установка React + ts
+## Встановлення Node.js
 
-- `npm create vite@latest my-react-app --template react`
-- `cd my-react-app`
-- `npm install`
-- `npm run dev`
-
----
-
-## Установка Eslint, Redux
-
-- `npm init @eslint/config`
-- `npm install -D eslint-plugin-react eslint-plugin-react-hooks eslint-config-airbnb redux react-redux react-router-dom @reduxjs/toolkit`
-
----
-
-### Настройка .eslintrc.json
-*copy/past*  
+відкрийте ваш термінал та введіть команду, для перевірки чи встановленний Node.js
 
 ```
-{
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:react/jsx-runtime",
-        "plugin:import/recommended",
-        "airbnb",
-        "prettier",
-        "plugin:@typescript-eslint/recommended"
-    ],
-    "overrides": [
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react-hooks",
-        "react",
-        "@typescript-eslint"
-    ],
-    "rules": {
-        "react/react-in-jsx-scope": "off",
-        "import/prefer-default-export": "off",
-        "react/prop-types": 0,
-        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn" 
-    }
-}
+node -v
 ```
+
+Якщо ви побачили свою версію, тоді переходимо до наступного кроку. Якщо помилка, тоді встановлюєму Node.js на свій комп'ютер за цим посиланням https://nodejs.org/en, рекомендовано обирати версію LTS.
+
+Після встановлення, закрийти та відкритйте термінал, знову введіть команду для перевірки наведену вище. Якщо побачили вашу версію, то тоді все зробили вірно.
 
 ---
 
-## Установка **Prettier**
+## Запуск проєкту
 
-- `npm install -D --save-exact prettier eslint-config-prettier`
-- `echo {}> .prettierrc.json`
+- відкрити термінал та перейти в дерикторію, де буде розміщений проєкт
+- скопіювати прєкт за допомогою команди
+
+```
+git clone "https://github.com/Volynskyi-Kirill/courseProject.git"
+```
+
+- cd courseProject
+- cd server
+- npm i
+- npm run dev
+- cd ..
+- cd my-react-app
+- npm i
+- npm run dev
+- перейти по посиланню http://localhost:5173/
 
 ---
-
-### Настройка .prettierrc.json
-
-```
-{
-  "trailingComma": "es5",
-  "tabWidth": 4,
-  "semi": true,
-  "singleQuote": true
-}
-```
-
-

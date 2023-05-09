@@ -13,10 +13,20 @@ html {
 
 nav {
   position: fixed;
-  top: 20%;
+  top: 20vh;
   right: 100;
   transform: translateY(-50%);
   border-radius: 10px 0 0 10px;
+}
+
+@media screen and (max-height: 850px) {
+  nav {
+    position: fixed;
+    top: 30vh;
+    right: 100;
+    transform: translateY(-50%);
+    border-radius: 10px 0 0 10px;
+  }
 }
 
 nav a {

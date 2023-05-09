@@ -12,6 +12,7 @@ function Input(props) {
     isSelect,
     dataSelect,
     isEdit,
+    special,
   } = props;
 
   if (isSelect) {
@@ -58,6 +59,7 @@ function Input(props) {
         id={id}
         onChange={onChange}
         value={value}
+        className={special}
         required
       />
     </div>
