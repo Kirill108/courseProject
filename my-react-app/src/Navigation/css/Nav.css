@@ -29,6 +29,16 @@ nav {
   }
 }
 
+@media screen and (max-height: 650px) {
+  nav {
+    position: fixed;
+    top: 40vh;
+    right: 100;
+    transform: translateY(-50%);
+    border-radius: 10px 0 0 10px;
+  }
+}
+
 nav a {
   text-decoration: none;
   display: block;
@@ -63,22 +73,3 @@ section {
   align-items: center;
   flex-direction: column;
 }
-
-/* .section-delete {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
-
-/* #sec1 {
-    background-color: yellow;
-}
-
-#sec2 {
-    background-color: red;
-}
-
-#sec3 {
-    background-color: green;
-} */

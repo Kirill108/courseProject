@@ -19,20 +19,25 @@ node -v
 ## Запуск проєкту
 
 - відкрити термінал та перейти в дерикторію, де буде розміщений проєкт
-- скопіювати прєкт за допомогою команди
+- скопіювати проєкт за допомогою команди
 
 ```
 git clone "https://github.com/Volynskyi-Kirill/courseProject.git"
 ```
 
+Далі
+
 - cd courseProject
 - cd server
 - npm i
 - npm run dev
-- cd ..
+
+Відкрити ще один термінал
+
+- cd courseProject
 - cd my-react-app
 - npm i
 - npm run dev
-- перейти по посиланню http://localhost:5173/
+- перейти за посиланням http://localhost:5173/
 
 ---

@@ -45,15 +45,6 @@ textarea,
   margin-right: 50px;
   width: 55%;
 }
-/* 
-input[type="text"]:focus,
-[type="email"]:focus,
-[type="phone"]:focus,
-[type="date"]:focus,
-textarea:focus {
-  outline: none;
-  padding: 0 0 0.875em 0;
-} */
 
 ::-webkit-input-placeholder {
   color: #474544;
@@ -101,9 +92,6 @@ h1 {
 #form_button:active {
   transform: translateY(-5px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.message-form-submit {
 }
 
 @media only screen and (max-width: 1024px),

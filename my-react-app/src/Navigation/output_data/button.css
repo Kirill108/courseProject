@@ -1,14 +1,3 @@
-/* .button-delete {
-  position: absolute;
-  transform: rotate(45deg);
-  background-color: #ebf0f3;
-  border: none;
-  font-size: 25px;
-  margin-left: 1220px;
-  margin-top: -35px;
-  padding-top: 10px;
-} */
-
 .button-delete {
   transform: rotate(45deg);
   background: none;
@@ -16,7 +5,6 @@
   font-size: 25px;
   padding-top: 10px;
 }
-
 
 .button-delete:hover {
   color: red;
@@ -27,27 +15,12 @@
   font-size: 15px;
   margin-left: 1220px;
   margin-top: -25px;
-  /* padding-top: 10px; */
 }
 
 .button-save:hover {
   color: red;
 }
 
-/* .edit-icon {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background-color: #f8f8f8;
-  border: 1px solid #e2e2e2;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-left: 1220px;
-  margin-top: -30px;
-} */
 .edit-icon {
   width: 30px;
   height: 30px;
@@ -69,5 +42,3 @@
 td > input[type="date"] {
   width: 90%;
 }
-
-

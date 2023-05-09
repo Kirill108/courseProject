@@ -2,7 +2,6 @@
 @import url(navigation/css/nav.css);
 @import url(navigation/css/output_data.css);
 @import url(navigation/output_data/edit-data.css);
-@import url(navigation/request_data/request_data.css);
 
 .container-form-delete {
   display: flex;
