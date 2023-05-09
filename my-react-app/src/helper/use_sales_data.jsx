@@ -8,7 +8,6 @@ function useSalesData() {
   const updateSalesData = useCallback(
     (salesData) => {
       try {
-        // localStorage.setItem("salesData", JSON.stringify(salesData));
         const newSalesData = salesData.map((recorder, index) => ({
           ...recorder,
           item: index + 1,

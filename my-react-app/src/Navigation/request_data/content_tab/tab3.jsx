@@ -75,7 +75,6 @@ function SearchByСriteria() {
         sx={{
           mt: 1,
           maxWidth: 200,
-          // margin: "auto",
           ml: 13,
         }}
       >
@@ -106,9 +105,6 @@ function SearchByСriteria() {
                 label="кількість товару «від»"
                 type="number"
                 placeholder="«від»"
-                // InputLabelProps={{
-                //   shrink: true,
-                // }}
                 onChange={handleFromChange}
                 value={from}
                 required
@@ -119,9 +115,6 @@ function SearchByСriteria() {
                 label="кількість товару «до»"
                 type="number"
                 placeholder="«до»"
-                // InputLabelProps={{
-                //   shrink: true,
-                // }}
                 onChange={handleToChange}
                 value={to}
                 required

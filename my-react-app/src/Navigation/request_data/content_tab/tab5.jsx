@@ -15,7 +15,6 @@ function FourTovar() {
     const sortIncrease = [...salesData].sort((a, b) => a.pay - b.pay);
     let resultRequest;
 
-    // eslint-disable-next-line default-case
     switch (typeAction) {
       case TO_PAY.FOUR_LARGEST: {
         resultRequest = sortIncrease.slice(-4);

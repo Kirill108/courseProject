@@ -1,4 +1,3 @@
-/* eslint-disable prefer-destructuring */
 import { useState, useEffect, useMemo } from "react";
 import { Input } from "./Input";
 import { FormSubmit } from "./form_submit";
@@ -234,7 +233,6 @@ function InputData(props) {
         value: phone,
       },
     ],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dateSale, fio, nameTovar, amountTovar, priceOne, fioClient, phone]
   );
 

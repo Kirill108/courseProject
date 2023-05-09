@@ -16,7 +16,6 @@ function OutputData(props) {
   const sortingData = useSelector((store) => store.sort.sortingData);
   const requestData = useSelector((store) => store.request.requestData);
 
-  // salesData = optionSort ? sortingData : salesData;
   if (optionSort) {
     salesData = sortingData;
   } else if (listOptionDelete) {

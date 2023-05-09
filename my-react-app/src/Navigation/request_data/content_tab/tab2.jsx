@@ -2,12 +2,12 @@ import { useState, useMemo } from "react";
 import { getUniqueValues } from "../../../helper/get_uniqe_values";
 import { useSelector, useDispatch } from "react-redux";
 import { ListReact } from "../../../helper/react_list";
-import { handleRequest } from "../../../state/slice/data_request";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
+import { handleRequest } from "../../../state/slice/data_request";
 import { DEFAULT } from "../../../const/const";
 
 function TotalSaleRequest() {

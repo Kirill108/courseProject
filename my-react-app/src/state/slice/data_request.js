@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { DEFAULT } from "../../const/const";
 
 const initialState = {
   requestData: [],
-  //   typeRequest: null,
 };
 
 const DataRequest = createSlice({

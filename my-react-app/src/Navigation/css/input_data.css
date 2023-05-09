@@ -6,6 +6,13 @@ body {
   overflow: hidden;
 }
 
+@media screen and (max-height: 800px) {
+  body {
+    background: #ebf0f3;
+    overflow: visible;
+  }
+}
+
 #container {
   border: solid 3px #474544;
   max-width: 768px;

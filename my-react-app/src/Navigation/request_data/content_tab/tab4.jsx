@@ -37,7 +37,6 @@ function MoreOrLess() {
     if (resultRequest.length) {
       dispatch(handleRequest(resultRequest));
       setIsResetRequest(true);
-      // setInputNumber(DEFAULT.VALUE);
     } else {
       const choice = isMore ? "більше" : "менше";
       alert(`Немає даних за сумою до сплати ${choice} за ${inputNumber}`);
@@ -70,9 +69,6 @@ function MoreOrLess() {
           <Box
             sx={{
               mt: 2,
-              // // maxWidth: 200,
-              // display: "flex",
-              // alignItems: "space-between",
             }}
           >
             <Button

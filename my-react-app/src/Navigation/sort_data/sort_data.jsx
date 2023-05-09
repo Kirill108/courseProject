@@ -1,19 +1,15 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { OutputData } from "../output_data/output_data";
-import { ListReact } from "../../helper/react_list";
-import { SORT } from "../../const/const";
-import { sorting } from "./sorting/sorting";
-import { sortingData } from "../../state/slice/data_sort";
-import { DEFAULT } from "../../const/const";
-
+import Button from "@mui/material/Button";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Button from "@mui/material/Button";
-
-import "./sort_data.css";
+import { OutputData } from "../output_data/output_data";
+import { ListReact } from "../../helper/react_list";
+import { SORT, DEFAULT } from "../../const/const";
+import { sorting } from "./sorting/sorting";
+import { sortingData } from "../../state/slice/data_sort";
 
 function SortData() {
   const [optionSort, setOptionSort] = useState(DEFAULT.VALUE);

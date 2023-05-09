@@ -17,8 +17,6 @@ function DeleteCategory(props) {
 
   if (isDelete) {
     return (
-      // <div className="container-form-delete">
-
       <Box
         sx={{
           display: "flex",
@@ -46,7 +44,6 @@ function DeleteCategory(props) {
               >
                 <Tab label="одразу" value="1" />
                 <Tab label="фільтрація" value="2" />
-                {/* <Tab label="Item Three" value="3" /> */}
               </TabList>
             </Box>
             <TabPanel value="1">
@@ -62,11 +59,9 @@ function DeleteCategory(props) {
                 isList
               />
             </TabPanel>
-            {/* <TabPanel value="3">Item Three</TabPanel> */}
           </TabContext>
         </Box>
       </Box>
-      // </div>
     );
   }
   return null;
