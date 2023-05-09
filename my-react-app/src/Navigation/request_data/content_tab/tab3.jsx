@@ -8,12 +8,11 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Input from "@mui/joy/Input";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { DEFAULT } from "../../../const/const";
 
-function Tab3() {
+function SearchByСriteria() {
   const dispatch = useDispatch();
 
   const [tovar, setTovar] = useState(DEFAULT.VALUE);
@@ -153,4 +152,4 @@ function Tab3() {
   );
 }
 
-export { Tab3 };
+export { SearchByСriteria };

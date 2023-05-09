@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { handleRequest } from "../../../state/slice/data_request";
 
-function Tab1() {
+function DateRequest() {
   const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState(DEFAULT.VALUE);
   const [isResetRequest, setIsResetRequest] = useState(false);
@@ -79,4 +79,4 @@ function Tab1() {
   );
 }
 
-export { Tab1 };
+export { DateRequest };

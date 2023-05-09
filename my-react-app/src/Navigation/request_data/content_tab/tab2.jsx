@@ -3,17 +3,14 @@ import { getUniqueValues } from "../../../helper/get_uniqe_values";
 import { useSelector, useDispatch } from "react-redux";
 import { ListReact } from "../../../helper/react_list";
 import { handleRequest } from "../../../state/slice/data_request";
-
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Input from "@mui/joy/Input";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import { DEFAULT } from "../../../const/const";
 
-function Tab2() {
+function TotalSaleRequest() {
   const dispatch = useDispatch();
 
   const [manager, setManager] = useState(DEFAULT.VALUE);
@@ -69,7 +66,7 @@ function Tab2() {
           mt: 1,
           maxWidth: 200,
           // margin: "auto",
-          ml: 13,
+          ml: 40,
         }}
       >
         <form onSubmit={handleSubmitForm}>
@@ -78,7 +75,7 @@ function Tab2() {
               sx={{
                 display: "flex",
                 flexDirection: "row",
-				alignItems: "center"
+                alignItems: "center",
               }}
             >
               <InputLabel id="demo-simple-select-label">
@@ -95,7 +92,9 @@ function Tab2() {
               >
                 {allManager}
               </Select>
-              {count ? <Box sx={{minWidth: 350}}>Результат розрахунку: {count}</Box> : null}
+              {count ? (
+                <Box sx={{ minWidth: 350 }}>Результат розрахунку: {count}</Box>
+              ) : null}
             </Box>
             <Button
               sx={{ mt: 2, minWidth: 200 }}
@@ -121,4 +120,4 @@ function Tab2() {
   );
 }
 
-export { Tab2 };
+export { TotalSaleRequest };

@@ -143,7 +143,7 @@
     "item": 13
   },
   {
-    "dateSale": "08.03.2023",
+    "dateSale": "2023-03-08",
     "salesManager": "Котенко О.В.",
     "nameTovar": "фотоапарат",
     "amountTovar": "20",
@@ -154,7 +154,7 @@
     "item": 14
   },
   {
-    "dateSale": "09.01.2023",
+    "dateSale": "2023-01-09",
     "salesManager": "Осипенко Д.І.",
     "nameTovar": "блютуз колонка",
     "amountTovar": "60",
@@ -165,7 +165,7 @@
     "item": 15
   },
   {
-    "dateSale": "05.02.2023",
+    "dateSale": "2023-02-05",
     "salesManager": "Котенко О.В.",
     "nameTovar": "комп'ютер",
     "amountTovar": "5",
@@ -176,7 +176,7 @@
     "item": 16
   },
   {
-    "dateSale": "10.04.2023",
+    "dateSale": "2023-04-10",
     "salesManager": "Корнієнко М.М.",
     "nameTovar": "фотоапарат",
     "amountTovar": "20",
@@ -187,7 +187,7 @@
     "item": 17
   },
   {
-    "dateSale": "16.03.2023",
+    "dateSale": "2023-03-16",
     "salesManager": "Котенко О.В.",
     "nameTovar": "проводні навушники",
     "amountTovar": "70",
@@ -199,7 +199,7 @@
   },
   {
     "item": 19,
-    "dateSale": "20.03.2023",
+    "dateSale": "2023-03-20",
     "salesManager": "Котенко О.В.",
     "nameTovar": "телефон",
     "amountTovar": "60",
@@ -210,7 +210,7 @@
   },
   {
     "item": 20,
-    "dateSale": "01.05.2023",
+    "dateSale": "2023-05-01",
     "salesManager": "Корнієнко М.М.",
     "nameTovar": "телефон",
     "amountTovar": "120",

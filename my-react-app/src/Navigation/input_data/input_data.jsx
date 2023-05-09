@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import { useState, useEffect, useMemo } from "react";
 import { Input } from "./Input";
 import { FormSubmit } from "./form_submit";
@@ -6,6 +7,7 @@ import { MANAGER, TOVAR, MAX_LENGTH } from "../../const/const";
 import { useSelector, useDispatch } from "react-redux";
 import { changeEditingRow } from "../../state/slice/action_row";
 import { useSalesData } from "../../helper/use_sales_data";
+import { REGEX } from "../../const/const";
 
 function InputData(props) {
   const { isEdit } = props;
@@ -36,7 +38,9 @@ function InputData(props) {
   }, [itemEdit]);
 
   const checkNumber = (event, set) => {
-    if (event.target.value.search(/\d/) !== -1) {
+    const value = event.target.value;
+    if (!REGEX.LETTER.test(value) && value !== DEFAULT.VALUE) {
+      event.preventDefault();
       alert("Вводьте лише літери!");
     } else {
       set(event.target.value);
@@ -51,10 +55,11 @@ function InputData(props) {
     }
   };
 
-  const checkLength = (sentences, setSentences, limitSymbol) => {
-    if (sentences.length > limitSymbol) {
-      alert("Лімит символів перевищено!");
-      setSentences(sentences.slice(0, limitSymbol));
+  const checkLength = (event, setSentences, limitSymbol) => {
+    const value = event.target.value;
+    if (value.length > limitSymbol) {
+      alert("Ліміт символів перевищено!");
+      setSentences(value.slice(0, limitSymbol));
     }
   };
 
@@ -71,23 +76,25 @@ function InputData(props) {
   };
 
   const onChangeAmountTovar = (event) => {
-    checkLetters(event, setAmountTovar);
-    checkLength(amountTovar, setAmountTovar, MAX_LENGTH.TOVAR);
+    const value = event.target.value;
+    setAmountTovar(value);
+    checkLength(event, setAmountTovar, MAX_LENGTH.TOVAR);
   };
 
   const onChangePriceOne = (event) => {
-    checkLetters(event, setPriceOne);
-    checkLength(priceOne, setPriceOne, MAX_LENGTH.PRICE);
+    const value = event.target.value;
+    setPriceOne(value);
+    checkLength(event, setPriceOne, MAX_LENGTH.PRICE);
   };
 
   const onChangeFioClient = (event) => {
     checkNumber(event, setFioClient);
-    checkLength(fioClient, setFioClient, MAX_LENGTH.SYMBOL);
+    checkLength(event, setFioClient, MAX_LENGTH.SYMBOL);
   };
 
   const onChangePhone = (event) => {
     checkLetters(event, setPhone);
-    checkLength(phone, setPhone, MAX_LENGTH.PHONE);
+    checkLength(event, setPhone, MAX_LENGTH.PHONE);
   };
 
   const dataInput = {
@@ -169,7 +176,7 @@ function InputData(props) {
       {
         className: "name",
         typeInput: "text",
-        placeholder: "за менеджером",
+        placeholder: "Оберіть менеджера",
         name: "name",
         id: 2,
         onChange: onChangeFio,
@@ -190,7 +197,7 @@ function InputData(props) {
       },
       {
         className: "name",
-        typeInput: "text",
+        typeInput: "number",
         placeholder: "Кількість товару",
         name: "name",
         id: 4,
@@ -199,7 +206,7 @@ function InputData(props) {
       },
       {
         className: "name",
-        typeInput: "text",
+        typeInput: "number",
         placeholder: "Ціна за одиницю",
         name: "name",
         id: 5,
@@ -217,7 +224,7 @@ function InputData(props) {
       },
       {
         className: "name",
-        typeInput: "text",
+        typeInput: "phone",
         placeholder: "телефон (095562359)",
         name: "name",
         id: 7,
@@ -261,7 +268,8 @@ function InputData(props) {
       <div id="container">
         <h1>&bull; {isEdit ? "Редагувати" : "Введіть"} дані продажу &bull;</h1>
         <div className="underline" />
-        <form className="form"
+        <form
+          className="form"
           action="#"
           method="post"
           id="contact_form"

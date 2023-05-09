@@ -1,4 +1,3 @@
-// import { Theme, useTheme } from "@mui/material/styles";
 import "./input.css";
 
 function Input(props) {
@@ -18,7 +17,11 @@ function Input(props) {
   if (isSelect) {
     return (
       <>
-      {value && isEdit ? <p className="description-input">{placeholder}</p> : ""}
+        {value && isEdit ? (
+          <p className="description-input">{placeholder}</p>
+        ) : (
+          ""
+        )}
         <select
           value={value}
           onChange={onChange}
@@ -43,7 +46,11 @@ function Input(props) {
 
   return (
     <div className={className}>
-      {value && isEdit ? <p className="description-input">{placeholder}</p> : ""}
+      {value && isEdit ? (
+        <p className="description-input">{placeholder}</p>
+      ) : (
+        ""
+      )}
       <input
         type={typeInput}
         placeholder={placeholder}

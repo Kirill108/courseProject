@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import { handleRequest } from "../../../state/slice/data_request";
 import { TO_PAY } from "../../../const/const";
 
-function Tab5() {
+function FourTovar() {
   const dispatch = useDispatch();
   const salesData = useSelector((store) => store.dataSales.salesData);
   const [isResetRequest, setIsResetRequest] = useState(false);
@@ -96,4 +96,4 @@ function Tab5() {
   );
 }
 
-export { Tab5 };
+export { FourTovar };

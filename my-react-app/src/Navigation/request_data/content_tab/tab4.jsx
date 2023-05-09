@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Input from "@mui/joy/Input";
 import Button from "@mui/material/Button";
 
-function Tab4() {
+function MoreOrLess() {
   const dispatch = useDispatch();
 
   const [inputNumber, setInputNumber] = useState(DEFAULT.VALUE);
@@ -112,4 +112,4 @@ function Tab4() {
   );
 }
 
-export { Tab4 };
+export { MoreOrLess };

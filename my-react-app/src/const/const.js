@@ -20,7 +20,7 @@ const TOVAR = {
 const MAX_LENGTH = {
   TOVAR: 5,
   PRICE: 5,
-  SYMBOL: 25,
+  SYMBOL: 35,
   PHONE: 10,
 };
 
@@ -43,8 +43,22 @@ const TO_PAY = {
   TOGETHER: "Разом",
 };
 
+const REGEX = {
+  LETTER: /^[a-zA-Zа-яА-ЯіІїЇєЄ' ]+$/,
+  PHONE: /^0\d{9}$/,
+};
+
 // const REQUEST = {
 //   DATA: "",
 // }
 
-export { DEFAULT, MANAGER, TOVAR, MAX_LENGTH, SORT, TYPE_DELETE, TO_PAY };
+export {
+  DEFAULT,
+  MANAGER,
+  TOVAR,
+  MAX_LENGTH,
+  SORT,
+  TYPE_DELETE,
+  TO_PAY,
+  REGEX,
+};

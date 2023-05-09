@@ -17,12 +17,6 @@ async function fetchData() {
 
 salesData = await fetchData();
 
-// try {
-//   salesData = JSON.parse(localStorage.getItem("salesData"));
-// } catch(error) {
-//   alert(error)
-// }
-
 const initialState = {
   salesData: salesData ?? [],
 };

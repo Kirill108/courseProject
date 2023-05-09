@@ -21,9 +21,9 @@ function FormSubmit(
 
   if (!isDuplicate) {
     updateSalesData([...salesData, dataInput]);
-    // setDataInput.map((setData) => {
-    //   setData(DEFAULT.VALUE);
-    // });
+    setDataInput.map((setData) => {
+      setData(DEFAULT.VALUE);
+    });
     setIsFormSubmit(true);
     setTimeout(() => {
       setIsFormSubmit(false);

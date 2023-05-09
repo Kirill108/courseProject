@@ -5,7 +5,6 @@ import { ActionButton } from "./button";
 import { DeleteCategory } from "./delete_category";
 import { useSalesData } from "../../helper/use_sales_data";
 import { ListOptionDeleteContext } from "../../context/list_delete";
-import Button from "@mui/material/Button";
 import "./edit-data.css";
 
 function OutputData(props) {
@@ -34,15 +33,15 @@ function OutputData(props) {
     () =>
       salesData.map((item, index) => (
         <tr key={index}>
-          <td>{item.item}</td>
-          <td>{item.dateSale}</td>
+          <td className="alignment-number">{item.item}</td>
+          <td className="centered">{item.dateSale}</td>
           <td>{item.salesManager}</td>
           <td>{item.nameTovar}</td>
-          <td>{item.amountTovar}</td>
-          <td>{item.priceOne}</td>
-          <td>{item.pay}</td>
+          <td className="alignment">{item.amountTovar}</td>
+          <td className="alignment">{item.priceOne}</td>
+          <td className="alignment-pay">{item.pay}</td>
           <td>{item.fioClient}</td>
-          <td>{item.phone}</td>
+          <td className="centered">{item.phone}</td>
           <td className="button-action">
             <ActionButton
               key={index}

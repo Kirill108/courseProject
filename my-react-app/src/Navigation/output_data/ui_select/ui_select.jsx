@@ -1,5 +1,4 @@
 import { useState, useMemo, useContext } from "react";
-import { useSelector } from "react-redux";
 import { ListReact } from "../../../helper/react_list";
 import { DEFAULT } from "../../../const/const";
 import { Grid } from "@mui/material";
