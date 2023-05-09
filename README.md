@@ -1,6 +1,6 @@
 # Як запустити проєкт
 
-## інструкція наведена для розгортання проєкту у середовищі Visual Studio Code, встановити можна за цим посиланням https://code.visualstudio.com/Download
+інструкція наведена для розгортання проєкту у середовищі Visual Studio Code, встановити можна за цим посиланням https://code.visualstudio.com/Download
 
 ## Встановлення Node.js
 
