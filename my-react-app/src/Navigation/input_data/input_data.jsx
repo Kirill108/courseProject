@@ -149,6 +149,7 @@ function InputData(props) {
             nameTovar,
             phone,
             priceOne,
+            pay: Number(amountTovar) * Number(priceOne),
             salesManager: fio,
           };
         }

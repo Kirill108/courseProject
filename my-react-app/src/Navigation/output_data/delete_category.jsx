@@ -42,7 +42,7 @@ function DeleteCategory(props) {
                 aria-label="lab API tabs example"
                 sx={{ justifyContent: "center" }}
               >
-                <Tab label="одразу" value="1" />
+                <Tab label="відразу" value="1" />
                 <Tab label="фільтрація" value="2" />
               </TabList>
             </Box>
