@@ -8,7 +8,6 @@
 }
 
 .scrol {
-  /* overflow: auto; */
   overflow-x: hidden;
   overflow-y: auto;
   margin-bottom: 40px;

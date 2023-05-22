@@ -1,4 +1,3 @@
-/* eslint-disable default-case */
 import { SORT } from "../../../const/const";
 
 function sorting(arr, typeSorting) {
@@ -14,14 +13,10 @@ function sorting(arr, typeSorting) {
     }
 
     case SORT.AMOUNT_TOVAR_ASCENDING: {
-      // return [...arr].sort((a, b) => (a.amountTovar > b.amountTovar ? 1 : -1));
       return [...arr].sort((a, b) => a.amountTovar - b.amountTovar);
     }
 
     case SORT.AMOUNT_TOVAR_DESCENDING: {
-      // return [...arr]
-      //   .sort((a, b) => (a.amountTovar > b.amountTovar ? 1 : -1))
-      //   .reverse();
       return [...arr].sort((a, b) => a.amountTovar - b.amountTovar).reverse();
     }
   }

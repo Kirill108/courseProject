@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Input } from "./Input";
+import { Input } from "./input";
 import { FormSubmit } from "./form_submit";
 import { DEFAULT } from "../../const/const";
 import { MANAGER, TOVAR, MAX_LENGTH } from "../../const/const";
@@ -67,7 +67,7 @@ function InputData(props) {
   };
 
   const onChangeFio = (event) => {
-    checkNumber(event, setFio);
+    setFio(event.target.value);
   };
 
   const onChangeNameTovar = (event) => {

@@ -44,13 +44,9 @@ const TO_PAY = {
 };
 
 const REGEX = {
-  LETTER: /^[a-zA-Zа-яА-ЯіІїЇєЄ' ]+$/,
+  LETTER: /^[a-zA-Zа-яА-ЯіІїЇєЄ'. ]+$/,
   PHONE: /^0\d{9}$/,
 };
-
-// const REQUEST = {
-//   DATA: "",
-// }
 
 export {
   DEFAULT,
